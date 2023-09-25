@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>OnIT</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="The most advanced and simplified system with unique prebuilt feature to manage workforce with ease, trusted by 1000 professionals. Accessible on any device, Mobile App Workforce, Multilingual. Register with us and take your management to next level" />
+		<meta name="keywords" content="workforce, workforce system, simplified system,  web system, web development, dashboard, bootstrap dak mode, check in, check out, geolocation, attendance, leave, hr, task, timesheet" />
+        <meta content="MNSSB" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- <base href="http://localhost/code/projects/onit_ux/public/" /> -->
+        <base href="http://onit.my/public/" />
+
+        <link rel="shortcut icon" href="assets/custom/logos/favicon.png">
+        <link href="assets/libs/ladda/ladda.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/ladda/ladda-themeless.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="assets/js/custom/jquery-fileupload/css/jquery.fileupload-ui.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />        
+        <link href="assets/libs/jquery-toast-plugin/jquery.toast.min.css" rel="stylesheet" type="text/css" />
+        
+        <!-- third party css -->
+        <link href="assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
+        <script src="assets/js/head.js"></script>
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="app-style" />
+        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Custom css -->
+        <link href="assets/custom/styles.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+        <link href="assets/custom/jquery.magnify.css" rel="stylesheet">
+        <link href="assets/libs/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+        <link href="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/custom/projects/styles.css" rel="stylesheet" type="text/css" />
+        <link href="assets/custom/attendance/report_images.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- ========== Menu ========== -->
+            <div class="app-menu">  
+
+                <!-- Brand Logo -->
+                <div class="logo-box">
+                    <!-- Brand Logo Light -->
+                    <a href="index.html" class="logo-light">
+                        <img src="assets/custom/images/logo-light.png" alt="logo" class="logo-lg">
+                        <img src="assets/custom/images/logo-sm.png" alt="small logo" class="logo-sm">
+                    </a>
+
+                    <!-- Brand Logo Dark -->
+                    <a href="index.html" class="logo-dark">
+                        <img src="assets/custom/images/logo-dark.png" alt="dark logo" class="logo-lg">
+                        <img src="assets/custom/images/logo-sm.png" alt="small logo" class="logo-sm">
+                    </a>
+                </div>
+
+                <!-- menu-left -->
+                <div class="scrollbar">
+
+                    <!-- User box -->
+                    <div class="user-box text-center">
+                        <img src="assets/custom/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" id="left_profile_pic">
+                        <div class="dropdown">
+                            <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown" id="left_users_name">Geneva Kennedy</a>
+                            <div class="dropdown-menu user-pro-dropdown">
+
+                                <!-- item-->
+                                <a href="profile" class="dropdown-item notify-item" id="mn_left_myaccount">
+                                    <i class="fe-user"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <!-- <a href="javascript:void(0);" class="dropdown-item notify-item" id="mn_left_setttings">
+                                    <i class="fe-settings me-1"></i>
+                                    <span>Settings</span>
+                                </a> -->
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" data-toggle="modal" id="changepassm" data-target="#change_pwd_modal" data-initial="false" data-backdrop="static" data-keyboard="false" class="dropdown-item notify-item">
+                                    <i class="fe-lock"></i>
+                                    <span rn="change_password">Change Password</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="signout" class="dropdown-item notify-item" id="mn_left_signout" data-navigo>
+                                    <i class="fe-log-out me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <p class="text-muted mb-0">Admin Head</p>
+                    </div>
+
+                    <!--- Menu -->
+                    <ul class="menu">
+
+                        <li class="menu-title">Navigation</li>
+
+                        <li class="menu-item" id="user_dash_li">
+                            <a href="dashboard/user" class="menu-link" id="mn_user_dashboard" data-navigo>                            
+                                <span class="menu-icon"><i class="mdi mdi-view-dashboard-outline"></i></span>
+                                <span class="menu-text">Dashboards</span>                                
+                            </a>
+                        </li>
+
+                        <li class="menu-title">Apps</li>
+                
+                        
+                        <li class="menu-item" id="projects_li">
+                            <a href="#menu_projects" data-bs-toggle="collapse" class="menu-link">
+                                <span class="menu-icon"><i class="mdi mdi-briefcase-check-outline"></i></span>
+                                <span class="menu-text"> Projects </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="menu_projects">
+                                <ul class="sub-menu">
+                                    <li class="menu-item">
+                                        <a href="projects/projects_list" id="mn_projects" class="menu-link" data-navigo>
+                                            <span class="menu-text">List</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                        <li class="menu-item" id="users_li">
+                            <a href="#menu_people" data-bs-toggle="collapse" class="menu-link">
+                                <span class="menu-icon"><i class="mdi mdi-account-multiple-outline"></i></span>
+                                <span class="menu-text"> People </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="menu_people">
+                                <ul class="sub-menu">
+                                    <li class="menu-item">
+                                        <a href="operation/users" class="menu-link" id="mn_people" data-navigo>
+                                            <span class="menu-text">User List</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="users/users-history-report" class="menu-link" id="mn_users_history_report" data-navigo>
+                                            <span class="menu-text">History Report</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="menu-item" id="attendance_li">
+                            <a href="#menu_attendance" data-bs-toggle="collapse" class="menu-link">
+                                <span class="menu-icon"><i class="mdi mdi-share-variant"></i></span>
+                                <span class="menu-text"> Attendance </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="menu_attendance">
+                                <ul class="sub-menu">
+                                    <li class="menu-item">
+                                        <a href="operation/attendance" id="mn_attendance" class="menu-link" data-navigo>
+                                            <span class="menu-text">List</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="attendance/reports_summary" id="mn_attendance_reports" class="menu-link" data-navigo>
+                                            <span class="menu-text">Summary</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="attendance/reports_images" id="mn_attendance_images" class="menu-link" data-navigo>
+                                            <span class="menu-text">Images</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="menu-item" id="leave_li">
+                            <a href="#menu_leave" data-bs-toggle="collapse" class="menu-link">
+                                <span class="menu-icon"><i class="mdi mdi-layers-outline"></i></span>
+                                <span class="menu-text"> leave </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="menu_leave">
+                                <ul class="sub-menu">
+                                    <li class="menu-item">
+                                        <a href="leaves/leaves" id="mn_leave" class="menu-link" data-navigo>
+                                            <span class="menu-text">Application</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="leaves/approval" id="mn_leave_approval" class="menu-link" data-navigo>
+                                            <span class="menu-text">Approval</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="leave/report" id="mn_leave_report" class="menu-link" data-navigo>
+                                            <span class="menu-text">Report</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                        <li class="menu-item" id="customer_li">
+                            <a href="customer/list" class="menu-link" id="mn_customer" data-navigo>                            
+                                <span class="menu-icon"><i class="mdi mdi-account-circle-outline"></i></span>
+                                <span class="menu-text"> Customer </span>
+                            </a>
+                        </li>
+                        
+                        <li class="menu-item" id="utilities_li">
+                            <a href="settings/configuration" class="menu-link" id="mn_configuration" data-navigo>                            
+                                <span class="menu-icon"><i class="mdi mdi-clipboard-multiple-outline"></i></span>
+                                <span class="menu-text"> Configurations </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <!--- End Menu -->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <!-- ========== Left menu End ========== -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+
+                <!-- ========== Topbar Start ========== -->
+                <div class="navbar-custom">
+                    <div class="topbar">
+                        <div class="topbar-menu d-flex align-items-center gap-1">
+
+                            <!-- Topbar Brand Logo -->
+                            <div class="logo-box">
+                                <!-- Brand Logo Light -->
+                                <a href="index.html" class="logo-light">
+                                    <img src="assets/images/logo-light.png" alt="logo" class="logo-lg">
+                                    <img src="assets/images/logo-sm.png" alt="small logo" class="logo-sm">
+                                </a>
+
+                                <!-- Brand Logo Dark -->
+                                <a href="index.html" class="logo-dark">
+                                    <img src="assets/images/logo-dark.png" alt="dark logo" class="logo-lg">
+                                    <img src="assets/images/logo-sm.png" alt="small logo" class="logo-sm">
+                                </a>
+                            </div>
+
+                            <!-- Sidebar Menu Toggle Button -->
+                            <button class="button-toggle-menu">
+                                <i class="mdi mdi-menu"></i>
+                            </button>
+                                                        
+                        </div>
+
+                        <ul class="topbar-menu d-flex align-items-center">
+
+                            <!-- Fullscreen Button -->
+                            <li class="d-none d-md-inline-block">
+                                <a class="nav-link waves-effect waves-light" href="" data-toggle="fullscreen">
+                                    <i class="fe-maximize font-22"></i>
+                                </a>
+                            </li>                            
+                            
+                            <!-- Language flag dropdown  -->
+                            <li class="dropdown d-none d-md-inline-block">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <img src="assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="18">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+                            <!-- Notofication dropdown -->
+                            <li class="dropdown notification-list">
+                                <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="fe-bell font-22"></i>
+                                    <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0">
+                                    <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h6 class="m-0 font-16 fw-semibold"> Notification</h6>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="javascript: void(0);" class="text-dark text-decoration-underline">
+                                                    <small>Clear All</small>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="px-1" style="max-height: 300px;" data-simplebar>
+
+                                        <h5 class="text-muted font-13 fw-normal mt-2">Today</h5>
+                                        <!-- item-->
+
+                                        <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card unread-noti shadow-none mb-1">
+                                            <div class="card-body">
+                                                <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="notify-icon bg-primary">
+                                                            <i class="mdi mdi-comment-account-outline"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 text-truncate ms-2">
+                                                        <h5 class="noti-item-title fw-semibold font-14">Datacorp <small class="fw-normal text-muted ms-1">1 min ago</small></h5>
+                                                        <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-1">
+                                            <div class="card-body">
+                                                <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="notify-icon bg-info">
+                                                            <i class="mdi mdi-account-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 text-truncate ms-2">
+                                                        <h5 class="noti-item-title fw-semibold font-14">Admin <small class="fw-normal text-muted ms-1">1 hours ago</small></h5>
+                                                        <small class="noti-item-subtitle text-muted">New user registered</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <h5 class="text-muted font-13 fw-normal mt-0">Yesterday</h5>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-1">
+                                            <div class="card-body">
+                                                <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="notify-icon">
+                                                            <img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 text-truncate ms-2">
+                                                        <h5 class="noti-item-title fw-semibold font-14">Cristina Pride <small class="fw-normal text-muted ms-1">1 day ago</small></h5>
+                                                        <small class="noti-item-subtitle text-muted">Hi, How are you? What about our next meeting</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <h5 class="text-muted font-13 fw-normal mt-0">30 Dec 2021</h5>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-1">
+                                            <div class="card-body">
+                                                <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="notify-icon bg-primary">
+                                                            <i class="mdi mdi-comment-account-outline"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 text-truncate ms-2">
+                                                        <h5 class="noti-item-title fw-semibold font-14">Datacorp</h5>
+                                                        <small class="noti-item-subtitle text-muted">Caleb Flakelar commented on Admin</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item p-0 notify-item card read-noti shadow-none mb-1">
+                                            <div class="card-body">
+                                                <span class="float-end noti-close-btn text-muted"><i class="mdi mdi-close"></i></span>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-shrink-0">
+                                                        <div class="notify-icon">
+                                                            <img src="assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-grow-1 text-truncate ms-2">
+                                                        <h5 class="noti-item-title fw-semibold font-14">Karen Robinson</h5>
+                                                        <small class="noti-item-subtitle text-muted">Wow ! this admin looks good and awesome design</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <div class="text-center">
+                                            <i class="mdi mdi-dots-circle mdi-spin text-muted h3 mt-0"></i>
+                                        </div>
+                                    </div>
+
+                                    <!-- All-->
+                                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item border-top border-light py-2">
+                                        View All
+                                    </a>
+
+                                </div>
+                            </li>
+
+                            <!-- Light/Darj Mode Toggle Button -->
+                            <li class="d-none d-sm-inline-block">
+                                <div class="nav-link waves-effect waves-light" id="light-dark-mode">
+                                    <i class="ri-moon-line font-22"></i>
+                                </div>
+                            </li>
+
+                            <!-- User Dropdown -->
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <img src="assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle" id="profile_pic">
+                                    <span class="ms-1 d-none d-md-inline-block" id="users_name">
+                                        Geneva <i class="mdi mdi-chevron-down"></i>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                                    <!-- item-->
+                                    <div class="dropdown-header noti-title">
+                                        <h6 class="text-overflow m-0">Welcome !</h6>
+                                    </div>
+
+                                    <!-- item-->
+                                    <a href="profile" id="mn_myaccount" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>My Account</span>
+                                    </a>
+
+                                    <!-- item-->
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <i class="fe-settings"></i>
+                                        <span>Settings</span>
+                                    </a> -->
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" data-toggle="modal" id="changepassm" data-target="#change_pwd_modal" data-initial="false" data-backdrop="static" data-keyboard="false" class="dropdown-item notify-item">
+                                        <i class="fe-lock"></i>
+                                        <span rn="change_password">Change Password</span>
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <!-- item-->
+                                    <a href="signout" class="dropdown-item notify-item" id="mn_signout" data-navigo>
+                                        <i class="fe-log-out"></i>
+                                        <span>Logout</span>
+                                    </a>
+
+                                </div>
+                            </li>
+
+                            <!-- Right Bar offcanvas button (Theme Customization Panel) -->
+                            <!-- <li>
+                                <a class="nav-link waves-effect waves-light" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
+                                    <i class="fe-settings font-22"></i>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- ========== Topbar End ========== -->
+
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid" id="content_div"></div> 
+                    <!-- container -->
+
+                    <div class="modal fade" id="change_pwd_modal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" >
+                                    <h4 class="modal-title" style="float:left" id="myModalLabel">Change Password</h4>
+                                    <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                
+                                <div class="modal-body">
+                                    <form class="form-horizontal" id="change_pwd_form" data-parsley="validate">
+                                        <div class="row mt-2">
+                                            <div class="row">
+                                            <label for="txt_current_pwd" class="col-4 col-form-label">Current Password</label>
+                                            <div class="col-8 errorContainer">
+                                                <div class="input-group input-group-merge">
+                                                    <input id="txt_current_pwd" type="password" class="form-control" placeholder="Current Password" required tabindex=1 >
+                                                    <div class="input-group-text show-password"  data-password="false">
+                                                        <span class="password-eye"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row mt-2">
+                                            <div class="row">
+                                                <label for="txt_new_pwd" class="col-4 col-form-label">New Password</label>
+                                                <div class="col-8 errorContainer">
+                                                    <div class="input-group input-group-merge" >
+                                                        <input type="password" id="txt_new_pwd" class="form-control" placeholder="New Password"  data-required="true" tabindex=2 pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" data-regexp-message="Password is not as per password policy" required>
+                                                        <div class="input-group-text show-password" id="showpass" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
+                                                        <div class="col-md-12" id="passwordpolicy"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="row mt-2">
+                                            <div class="row">
+                                            <label for="txt_confirm_pwd" class="col-4 col-form-label">Confirm New Password</label>
+                                                <div class="col-8 errorContainer">
+                                                    <div class="input-group input-group-merge">
+                                                        <input id="txt_confirm_pwd" type="password" class="form-control" placeholder="Confirm New Password" required data-parsley-matched="" tabindex=3 required>
+                                                        <div class="input-group-text show-password"  data-password="false">
+                                                            <span class="password-eye"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row" id="div_response" style="margin-top: 20px;margin-right: 20px;margin-left: 2px;">
+                                           
+                                        </div>
+                                       
+                                    </form>
+                                </div>
+                    
+                                <div class="modal-footer" id="div_footer" style="margin-right: 22px;">
+                                    <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                                    <button id="btn_update_pwd" type="button" class="btn btn-success" data-style="expand-left" data-spinner-color="#000000">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2012 - <script>document.write(new Date().getFullYear())</script> &copy; MN Solutions Sdn Bhd <a href="" class="text-white-50"></a> 
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end footer-links">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
+        </div>
+        <!-- END wrapper -->
+
+
+        <!-- Theme Settings -->
+        <div class="offcanvas offcanvas-end right-bar" tabindex="-1" id="theme-settings-offcanvas">
+            <div class="d-flex align-items-center w-100 p-0 offcanvas-header">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-bordered nav-justified w-100" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link py-2" data-bs-toggle="tab" href="#chat-tab" role="tab">
+                            <i class="mdi mdi-message-text d-block font-22 my-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2" data-bs-toggle="tab" href="#tasks-tab" role="tab">
+                            <i class="mdi mdi-format-list-checkbox d-block font-22 my-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 active" data-bs-toggle="tab" href="#settings-tab" role="tab">
+                            <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="offcanvas-body p-3 h-100" data-simplebar>
+                <!-- Tab panes -->
+                <div class="tab-content pt-0">
+                    <div class="tab-pane" id="chat-tab" role="tabpanel">
+
+                        <form class="search-bar">
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="mdi mdi-magnify"></span>
+                            </div>
+                        </form>
+
+                        <h6 class="fw-medium mt-2 text-uppercase">Group Chats</h6>
+
+                        <div>
+                            <a href="javascript: void(0);" class="text-reset notification-item ps-3 mb-2 d-block">
+                                <i class="mdi mdi-checkbox-blank-circle-outline me-1 text-success"></i>
+                                <span class="mb-0 mt-1">App Development</span>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item ps-3 mb-2 d-block">
+                                <i class="mdi mdi-checkbox-blank-circle-outline me-1 text-warning"></i>
+                                <span class="mb-0 mt-1">Office Work</span>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item ps-3 mb-2 d-block">
+                                <i class="mdi mdi-checkbox-blank-circle-outline me-1 text-danger"></i>
+                                <span class="mb-0 mt-1">Personal Group</span>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item ps-3 d-block">
+                                <i class="mdi mdi-checkbox-blank-circle-outline me-1"></i>
+                                <span class="mb-0 mt-1">Freelance</span>
+                            </a>
+                        </div>
+
+                        <h6 class="fw-medium mt-3 text-uppercase">Favourites <a href="javascript: void(0);" class="font-18 text-danger"><i class="float-end mdi mdi-plus-circle"></i></a></h6>
+
+                        <div>
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-10.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status online"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Andrew Mackie</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">It will seem like simplified English.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-1.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status away"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Rory Dalyell</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">To an English person, it will seem like simplified</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-9.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status busy"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Jaxon Dunhill</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">To achieve this, it would be necessary.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <h6 class="fw-medium mt-3 text-uppercase">Other Chats <a href="javascript: void(0);" class="font-18 text-danger"><i class="float-end mdi mdi-plus-circle"></i></a></h6>
+
+                        <div class="pb-4">
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-2.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status online"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Jackson Therry</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">Everyone realizes why a new common language.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-4.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status away"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Charles Deakin</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">The languages only differ in their grammar.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-5.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status online"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Ryan Salting</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">If several languages coalesce the grammar of the resulting.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-6.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status online"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Sean Howse</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">It will seem like simplified English.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-7.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status busy"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Dean Coward</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">The new common language will be more simple.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset notification-item">
+                                <div class="d-flex align-items-start noti-user-item">
+                                    <div class="position-relative me-2">
+                                        <img src="assets/images/users/user-8.jpg" class="rounded-circle avatar-sm" alt="user-pic">
+                                        <i class="mdi mdi-circle user-status away"></i>
+                                    </div>
+                                    <div class="overflow-hidden">
+                                        <h6 class="mt-0 mb-1 font-14">Hayley East</h6>
+                                        <div class="font-13 text-muted">
+                                            <p class="mb-0 text-truncate">One could refuse to pay expensive translators.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="text-center mt-3">
+                                <a href="javascript:void(0);" class="btn btn-sm btn-white">
+                                    <i class="mdi mdi-spin mdi-loading me-2"></i>
+                                    Load more
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane" id="tasks-tab" role="tabpanel">
+                        <h6 class="fw-medium p-3 m-0 text-uppercase">Working Tasks</h6>
+                        <div class="px-2">
+                            <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                                <p class="text-muted mb-0">App Development<span class="float-end">75%</span></p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                                <p class="text-muted mb-0">Database Repair<span class="float-end">37%</span></p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                                <p class="text-muted mb-0">Backup Create<span class="float-end">52%</span></p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 52%" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <h6 class="fw-medium mb-0 mt-4 text-uppercase">Upcoming Tasks</h6>
+
+                        <div>
+                            <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                                <p class="text-muted mb-0">Sales Reporting<span class="float-end">12%</span></p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                                <p class="text-muted mb-0">Redesign Website<span class="float-end">67%</span></p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+
+                            <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                                <p class="text-muted mb-0">New Admin Design<span class="float-end">84%</span></p>
+                                <div class="progress mt-2" style="height: 4px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 84%" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="p-3 mt-2 d-grid">
+                            <a href="javascript: void(0);" class="btn btn-success waves-effect waves-light">Create Task</a>
+                        </div>
+
+                    </div>
+
+                    <div class="tab-pane active" id="settings-tab" role="tabpanel">
+
+                        <div class="mt-n3">
+                            <h6 class="fw-medium py-2 px-3 font-13 text-uppercase bg-light mx-n3 mt-n3 mb-3">
+                                <span class="d-block py-1">Theme Settings</span>
+                            </h6>
+                        </div>
+
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
+                        </div>
+
+                        <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Color Scheme</h5>
+
+                        <div class="colorscheme-cardradio">
+                            <div class="d-flex flex-column gap-2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-bs-theme" id="layout-color-light" value="light">
+                                    <label class="form-check-label" for="layout-color-light">Light</label>
+                                </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-bs-theme" id="layout-color-dark" value="dark">
+                                    <label class="form-check-label" for="layout-color-dark">Dark</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Content Width</h5>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="data-layout-width" id="layout-width-default" value="default">
+                                <label class="form-check-label" for="layout-width-default">Fluid (Default)</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="data-layout-width" id="layout-width-boxed" value="boxed">
+                                <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+                            </div>
+                        </div>
+
+                        <div id="layout-mode">
+                            <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Layout Mode</h5>
+
+                            <div class="d-flex flex-column gap-2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-layout-mode" id="layout-mode-default" value="default">
+                                    <label class="form-check-label" for="layout-mode-default">Default</label>
+                                </div>
+
+
+                                <div id="layout-detached">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" name="data-layout-mode" id="layout-mode-detached" value="detached">
+                                        <label class="form-check-label" for="layout-mode-detached">Detached</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Topbar Color</h5>
+
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-light" value="light">
+                                <label class="form-check-label" for="topbar-color-light">Light</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-dark" value="dark">
+                                <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                            </div>
+
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" name="data-topbar-color" id="topbar-color-brand" value="brand">
+                                <label class="form-check-label" for="topbar-color-brand">Brand</label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Menu Color</h5>
+
+                            <div class="d-flex flex-column gap-2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-menu-color" id="leftbar-color-light" value="light">
+                                    <label class="form-check-label" for="leftbar-color-light">Light</label>
+                                </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-menu-color" id="leftbar-color-dark" value="dark">
+                                    <label class="form-check-label" for="leftbar-color-dark">Dark</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-menu-color" id="leftbar-color-brand" value="brand">
+                                    <label class="form-check-label" for="leftbar-color-brand">Brand</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-menu-color" id="leftbar-color-gradient" value="gradient">
+                                    <label class="form-check-label" for="leftbar-color-gradient">Gradient</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="menu-icon-color">
+                            <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Menu Icon Color</h5>
+
+                            <div class="d-flex flex-column gap-2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-two-column-color" id="twocolumn-menu-color-light" value="light">
+                                    <label class="form-check-label" for="twocolumn-menu-color-light">Light</label>
+                                </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-two-column-color" id="twocolumn-menu-color-dark" value="dark">
+                                    <label class="form-check-label" for="twocolumn-menu-color-dark">Dark</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-two-column-color" id="twocolumn-menu-color-brand" value="brand">
+                                    <label class="form-check-label" for="twocolumn-menu-color-brand">Brand</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-two-column-color" id="twocolumn-menu-color-gradient" value="gradient">
+                                    <label class="form-check-label" for="twocolumn-menu-color-gradient">Gradient</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sidebar-size">
+                            <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Sidebar Size</h5>
+
+                            <div class="d-flex flex-column gap-2">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-sidenav-size" id="leftbar-size-default" value="default">
+                                    <label class="form-check-label" for="leftbar-size-default">Default</label>
+                                </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-sidenav-size" id="leftbar-size-compact" value="compact">
+                                    <label class="form-check-label" for="leftbar-size-compact">Compact (Medium Width)</label>
+                                </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-sidenav-size" id="leftbar-size-small" value="condensed">
+                                    <label class="form-check-label" for="leftbar-size-small">Condensed (Icon View)</label>
+                                </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-sidenav-size" id="leftbar-size-full" value="full">
+                                    <label class="form-check-label" for="leftbar-size-full">Full Layout</label>
+                                </div>
+
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="data-sidenav-size" id="leftbar-size-fullscreen" value="fullscreen">
+                                    <label class="form-check-label" for="leftbar-size-fullscreen">Fullscreen Layout</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sidebar-user">
+                            <h5 class="fw-medium font-14 mt-4 mb-2 pb-1">Sidebar User Info</h5>
+
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" name="data-sidebar-user" id="sidebaruser-check">
+                                <label class="form-check-label" for="sidebaruser-check">Enable</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="offcanvas-footer border-top py-2 px-2 text-center">
+                <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-light w-50" id="reset-layout">Reset</button>
+                    <a href="https://1.envato.market/uboldadmin" class="btn btn-danger w-50" target="_blank"><i class="mdi mdi-basket me-1"></i> Buy</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- START FILE UPLOAD -->
+        <script type="text/template" id="qq-template-manual-trigger">
+            <div class="qq-uploader-selector qq-uploader" qq-drop-area-text="Drop files here">
+                <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+                    <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+                </div>
+                <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+                    <span class="qq-upload-drop-area-text-selector"></span>
+                </div>
+                <div class="qq-upload-button-selector qq-upload-button">
+                    <div>Select files</div>
+                </div>
+                <button type="button" id="trigger-upload" class="btn btn-primary">
+                    <i class="icon-upload icon-white"></i> Upload
+                </button> 
+                <span class="qq-drop-processing-selector qq-drop-processing">
+                    <span>Processing dropped files...</span>
+                    <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+                </span>
+                <ul class="qq-upload-list-selector qq-upload-list" aria-live="polite" aria-relevant="additions removals">
+                    <li>
+                        <div class="qq-progress-bar-container-selector">
+                            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+                        </div>
+                        <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                        <img class="qq-thumbnail-selector" qq-max-size="100" qq-server-scale>
+                        <span class="qq-upload-file-selector qq-upload-file"></span>
+                        <span class="qq-upload-size-selector qq-upload-size"></span>
+                        <button type="button" class="qq-btn qq-upload-cancel-selector qq-upload-cancel">Cancel</button>
+                        <button type="button" class="qq-btn qq-upload-retry-selector qq-upload-retry">Retry</button>
+                        <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">Delete</button>
+                        <a type="button" class="qq-btn qq-download-option-selector qq-download-option qq-hide" target="_blank">View</a>
+                        <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+                    </li>
+                </ul>
+
+                <dialog class="qq-alert-dialog-selector">
+                    <div class="qq-dialog-message-selector"></div>
+                    <div class="qq-dialog-buttons">
+                        <button type="button" class="qq-cancel-button-selector">Close</button>
+                    </div>
+                </dialog>
+
+                <dialog class="qq-confirm-dialog-selector">
+                    <div class="qq-dialog-message-selector"></div>
+                    <div class="qq-dialog-buttons">
+                        <button type="button" class="qq-cancel-button-selector">No</button>
+                        <button type="button" class="qq-ok-button-selector">Yes</button>
+                    </div>
+                </dialog>
+
+                <dialog class="qq-prompt-dialog-selector">
+                    <div class="qq-dialog-message-selector"></div>
+                    <input type="text">
+                    <div class="qq-dialog-buttons">
+                        <button type="button" class="qq-cancel-button-selector">Cancel</button>
+                        <button type="button" class="qq-ok-button-selector">Ok</button>
+                    </div>
+                </dialog>
+            </div>
+        </script>
+        <!-- END FILE UPLOAD -->
+
+
+        <script src="assets/js/vendor.min.js"></script>
+        <script src="assets/js/app.min.js"></script>
+        <script src="assets/libs/moment/min/moment.min.js"></script>
+        <script src="config/config.js"></script>
+
+        <script src="./assets/libs/parsleyjs/parsley.min.js"></script>
+        <script src="./assets/libs/ladda/spin.min.js"></script>
+        <script src="./assets/libs/ladda/ladda.min.js"></script>
+
+        <script src="./assets/js/custom/jStorage-master/jstorage.min.js"></script>
+        <script src="./assets/js/custom/jquery.blockUI.js"></script>
+        <script src="./assets/libs/jquery-toast-plugin/jquery.toast.min.js"></script>
+        <script src="./assets/js/custom/core.js"></script>
+        <script src="./assets/libs/select2/js/select2.min.js"></script>
+        <script src="./assets/libs/flatpickr/flatpickr.min.js"></script>
+        
+        <script src="./assets/js/custom/navigo.min.js"></script>
+        <script src="./assets/js/custom/bootbox/bootbox.min.js"></script>
+
+
+
+        <!-- third party js -->
+        <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+        <script src="assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="assets/libs/mohithg-switchery/switchery.min.js"></script>
+        <!-- <script src="./assets/js/moment.js/2.18.1/moment.min.js"></script> -->
+
+        <script src="assets/js/custom/jspdf/plugins/jspdf.min.js"></script>
+        <script src="assets/js/custom/jspdf/plugins/jspdf.plugin.autotable.js"></script>
+        <script src="assets/js/custom/jspdf/exportpdf.js"></script>
+
+        <!--for date range picker-->
+        <script src="./assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+        <script src='./assets/libs/admin-resources/bootstrap-datepicker/js/daterangepicker.js'></script>
+
+        <script src="./assets/js/custom/jquery-fileupload/js/tmpl.min.js"></script>
+        <script src="./assets/js/custom/jquery-fileupload/js/vendor/jquery.ui.widget.js"></script>
+        <script src="./assets/js/custom/jquery-fileupload/js/jquery.fileupload.js"></script>
+        <script src="./assets/js/custom/jquery-fileupload/js/jquery.fileupload-process.js"></script>
+        <script src="./assets/js/custom/jquery-fileupload/js/jquery.fileupload-ui.js"></script>
+        <script src="./assets/js/custom/numeric-validation.js"></script>
+        <script src="./assets/libs/tippy.js/tippy.all.min.js"></script>
+       
+        <script src="index.js"></script>
+        <script src="assets/js/custom/jquery.magnify.js"></script>
+
+        <!-- Custom form-advance -->
+        <script src="assets/libs/selectize/js/standalone/selectize.min.js"></script>
+        <script src="assets/libs/multiselect/js/jquery.multi-select.js"></script>
+        <script src="assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
+        <script src="assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
+        <script src="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+        <script src="assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+        <script src="assets/js/pages/form-advanced.init.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.3.5/jquery.timepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
+
+          <script src="assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+          <script src="assets/libs/clockpicker/bootstrap-clockpicker.min.js"></script>
+  
+          <script src="assets/js/pages/form-pickers.init.js"></script>
+  
+
+    </body>
+</html>
+
+<script id="template-upload" type="text/x-tmpl">
+
+    {% 
+        let maxFileSize      = 1024 * 1024 * SESSIONS_DATA.FILEUPLOAD_MAXSIZE;
+        let acceptFileTypes  = o.options.extension != undefined ? o.options.extension : SESSIONS_DATA.FILEUPLOAD_ALLOWED_TYPE;
+        acceptFileTypes = 'pdf,png,jpg,jpeg,xlsx,xls,doc,docx,ppt,pptx,zip,PDF,PNG,JPG,JPEG,XLSX,XLS,DOC,DOCX,PPT,PPTX,ZIP';
+        let extensions_array = acceptFileTypes.split(',');
+        
+        for (var i=0, file; file=o.files[i]; i++) { 
+        let fileExtension= file.name.split('.').pop();
+        if($.inArray( fileExtension, extensions_array ) == -1)
+        {
+
+            file.error = 'File type not allowed';
+        }
+        else if (file.size > maxFileSize) {
+            file.error = 'File is too large';
+        }
+    %}
+    <div class="list-group-item template-upload p-0 file-upload {% if (!file.error) { %} new {% } %}" style="display:flex">
+        <div class="col-sm-6" style="float:left;padding: 15px;">
+            <span class="cancel"><i class="fa fa-times fa-fw" aria-hidden="true"></i></a>
+            <span class="name">{%=file.name%}</span>
+        </div>
+        <div class="col-sm-2" style="float:left;padding: 15px;">
+            <p class="size" style="margin:0;">{%=o.formatFileSize(file.size)%}</p>
+        </div>
+        <div class="col-sm-4 progress" style="float:left;margin-top:20px;">
+            <div style="margin-top:0px;margin-bottom:0px;" style="width:100%;" class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                
+            </div>
+            {% if (file.error) { %}
+            <div><span class="label label-danger">Error</span> {%=file.error%} </div>
+            {% } %}
+        </div>
+    </div>
+    {% } %}
+</script>
+
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+</script>
