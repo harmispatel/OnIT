@@ -1,0 +1,710 @@
+<style>
+	.page-link.disabled
+	{
+		background-color: #eceff1;
+	}
+</style>
+<!-- start page title -->
+<div class="row mt-3 mb-1">
+    <div class="col-12">
+        <div class="page-title-box">
+			<div style="float:left"><h4 class="page-title" style="float:left">Customer&nbsp;</h4></div>
+			<div style="float:left;line-height:77px;"><span id="total_records" class="badge rounded-pill bg-warning small-pill">0</span></div>
+			<div class="mt-3" style="float:right">
+				<button type="button" id="btn_search" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-magnify"></i> Search</button>
+				<button type="button" id="btn_new" class="btn btn-danger waves-effect waves-light" ><i class="mdi mdi-plus-circle me-1"></i> Add</button>
+			</div>
+        </div>
+    </div>
+</div>
+
+<div id="dynamicContent" style="display: none;">
+	<div class="form-group condition-row">
+		<label  class="col-sm-1 control-label">Label</label>
+		<div class="col-sm-3 error-container">
+			<input class="form-control" data-required="true" name="additional_label">
+		</div>
+
+		<label  class="col-sm-1 control-label">Value</label>
+		<div class="col-sm-3 error-container">
+			<input class="form-control" data-required="true" name="additional_value">
+		</div>
+
+		<div class="col-sm-2">
+			&nbsp;<button type="button" class="btn btn-danger delete-condition">
+				<i class="fa fa-trash-o" aria-hidden="true"></i>
+				<span class="hidden-xs">Remove</span>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="display:none;" id="search_div">
+	<div class="col-xl-12">
+		<div class="card">
+			<div class="card-body">
+
+				<div class="float-end">
+					<a id="closeSearch" href="javascript:void(0)">
+						<i class="mdi mdi-close-box m-0 text-muted h3"></i>
+					</a>
+				</div>
+
+				<div class="clearfix"></div>
+
+				<!-- <div class="row">
+					<div class="col-6">
+						<div class="row mb-4">
+							<label class="col-md-4 col-form-label" for="userName">User name</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="userName" name="userName" value="Coderthemes">
+							</div>
+						</div>
+					</div> 
+					<div class="col-6">
+						<div class="row mb-4">
+							<label class="col-md-4 col-form-label" for="userName">User name</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="userName" name="userName" value="Coderthemes">
+							</div>
+						</div>
+					</div> 			
+				</div> -->
+
+				<!-- SEARCH ROW 1 -->
+					<div class="col-xl-12">
+						<div class="col-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="col-form-label">Name</label>
+								</div> 
+								<div class="col-md-8">
+									<input type="text" id="txt_search_client_name" class="form-control">
+								</div>
+							</div>
+						</div>
+						<div class="col-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="col-form-label">Account Managers</label>
+								</div>
+								<div class="col-md-8">
+									<select id="dd_search_assigned_to" style="width:100%" class="form-control populate">
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- SEARCH ROW 1 -->
+				<!-- SEARCH ROW 2 -->
+					<div class="col-xl-12">
+						<div class="col-xl-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="col-form-label">Type <span class="error_color">*</span></label>
+								</div>
+								<div class="col-md-8 errorContainer">
+									<select class="form-control populate" id="dd_search_type" data-toggle="select2" data-width="100%">
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="col-form-label">Source</label>
+								</div>
+								<div class="col-md-8">
+									<select class="form-control populate" id="dd_search_source" data-toggle="select2" data-width="100%">
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- SEARCH ROW 2 -->
+				<!-- SEARCH ROW 3 -->
+					<div class="col-xl-12">
+						<div class="col-xl-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="col-form-label">Status</label>
+								</div>
+								<div class="col-md-8 errorContainer">
+									<select class="form-control country populate" id="dd_search_status" data-toggle="select2" data-width="100%">
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="col-form-label">Offerings</label>
+								</div>
+								<div class="col-md-8">
+									<select class="form-control country populate" id="dd_search_offerings" data-toggle="select2" data-width="100%">
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- SEARCH ROW 3 -->
+				<!-- SEARCH ROW 3.1 -->
+					<div class="col-xl-12">
+						<div class="col-xl-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="form-label mt-1 mb-0">Last Communicated</label>
+								</div>
+								<div class="col-1">
+										<input type="checkbox" class="form-check-input midsize-checkbox mt-1 mb-0" id="chk_is_date" checked>
+								</div>
+								<div class="col-7">
+									<div id="date_container">
+										<input type="text" id="doc_search_date" class="form-control flatpickr-input" placeholder="03-10-2021 to 02-10-2021" readonly="readonly" required>
+										<input type="hidden" id="from_date">
+										<input type="hidden" id="to_date">
+								</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="form-label mt-1 mb-0">Contacts</label>
+								</div>
+								<div class="col-1">
+										<input type="checkbox" class="form-check-input midsize-checkbox mt-1 mb-0" id="chk_is_contacts">
+								</div>
+								<div class="col-7 mt-1">
+									Display stake holders with contacts
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- SEARCH ROW 3.1 -->
+				<!-- SEARCH ROW 3.1 -->
+					<div class="col-xl-12" style="float:left">
+						<div class="col-xl-6 searchCol">
+							<div class="row">
+								<div class="col-md-4">
+									<label for="simpleinput" class="form-label mt-1 mb-0">Type of communication</label>
+								</div>
+								<div class="col-8">
+									<select class="form-control country populate" id="dd_search_comm_type" data-toggle="select2" data-width="100%">
+									</select>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				<!-- SEARCH ROW 3.1 -->
+				
+
+				<!-- SEARCH ROW 4 -->
+					<div class="col-xl-12">
+						<div class="col-xl-6 searchCol" style="text-align:right;float:right">
+							<button type="button" id="btn_reset" class="btn btn-light waves-effect waves-light" ><i class="mdi mdi-refresh"></i> Reset</button>
+							<button type="submit" id="btn_search_action" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-magnify"></i> Search</button>
+						</div>
+					</div>
+				<!-- SEARCH ROW 4 -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="tblList" class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-xl-12" id="list_div">
+					<div class="col-xl-12" style="text-align:right;">
+						<div class="dropdown float-end">
+							<a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<p id="download_excel" class="dropdown-item" style="cursor: pointer;">Export as Excel</p>
+								<!-- <p class="dropdown-item"  onclick="exportTable2PDF('Stake-Holders-Listing','tbl_list','p')" style="cursor: pointer;">Export as PDF</p> -->
+							</div>
+						</div>
+					</div>
+                    <div class="table-responsive">
+							<table class="table table-centered table-striped w-100" id="tbl_list">
+								<thead class="">
+									<tr>
+										<th>Type</th>
+										<th>Name</th>
+										<th>Account Manager</th>
+										<th>Industry</th>
+										<th>Status</th>
+                                        <th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+
+							<nav id="pagination_div" class="float-end">
+								<ul class="pagination" style="cursor: pointer;"></ul>
+							</nav>
+							
+							<!-- <div class='mt-2 appt_item text-center loadmore hoverCustom activeCustom' id="div_load_more" style="display: none;"><button id="btn_load_more" type="button" class="btn btn-sm btn-info waves-effect waves-light rounded-pill ">
+                                <i class="fa fa-arrow-down"></i>&nbsp;&nbsp;Load More&nbsp;&nbsp;<i class="fa fa-arrow-up"></i>
+                            </button></div>  -->
+							
+						</div>
+                </div>
+				<div class="col-xl-12" id="new_div" style="display:none;">
+					<div class="col-sm-12">
+						<div class="panel panel-primary">
+							<div >
+								<div class="col-xl-12">
+									<div  style=" text-align: end;" >
+										<button type="button"id="closeTaskWindow" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+									</div>
+										<h4 class="modal-title" ><span id="h4_primary_no">Stake Holder ID : -</span></h4>
+										
+								</div>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-12">
+										<form class="form-horizontal" data-validate="parsley" id="detail_form">
+											<div class="row mb-3">
+												<div class="col-md-6" >
+													<label for="simpleinput" class="form-label">Type <span class="error_color">*</span></label>
+													<div class="errorContainer">
+														<select id="dd_type" style="width:100%;" class="form-control multi populate" required multiple="multiple"></select>
+													</div>
+												</div>
+												<div class="col-md-6" >
+													<label for="simpleinput" class="form-label">Name <span class="error_color">*</span></label>
+													<input id="txt_client_id" type="hidden">
+													<input id="txt_client_name" type="text" class="form-control" required>
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="col-md-6" >
+													<label for="simpleinput" class="form-label">Address</label>
+													<textarea id="txt_address" rows="6" class="form-control" ></textarea>
+												</div>
+												<div class="col-md-6" >
+													<div class="col-md-12">
+														<label for="simpleinput" class="form-label">Office Telephone <span class="error_color">*</span></label>
+														<input id="txt_office_tel" type="text" class="form-control" required>
+													</div>
+													<div class="col-md-12 mt-3">
+														<label for="simpleinput" class="form-label">Website</label>
+														<input id="txt_website" type="url" class="form-control" >
+													</div>
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="col-md-6 errorContainer" >
+													<label for="simpleinput" class="form-label">Industry <span class="error_color">*</span></label>
+													<select id="dd_industry" style="width:100%" class="form-control populate not-multi" required></select>
+												</div>
+												<div class="col-md-6 errorContainer" >
+													<label for="simpleinput" class="form-label">Sources <span class="error_color">*</span></label>
+													<select id="dd_source" style="width:100%" class="form-control populate not-multi" required></select>
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="col-md-6 errorContainer" >
+													<label for="simpleinput" class="form-label">Status <span class="error_color">*</span></label>
+													<select id="dd_client_status" style="width:100%" class="form-control populate not-multi" required></select>
+												</div>
+												<div class="col-md-6" >
+													<label for="simpleinput" class="form-label">Registration No</label>
+													<input id="txt_id_no" type="text" class="form-control">
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="col-md-6" >
+													<label for="simpleinput" class="form-label">Bank</label>
+													<select id="dd_bank" style="width:100%" class="form-control populate not-multi"></select>
+												</div>
+												<div class="col-md-6" >
+													<label for="simpleinput" class="form-label">Account No</label>
+													<input id="txt_acc_no" type="text" class="form-control">
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="col-md-6" >
+													<label for="simpleinput" class="form-label">Account Managers</label>
+													<select id="dd_assign_client" class="form-control populate multi" style="width:100%;" multiple="multiple"></select>
+												</div>
+											</div>
+											
+											<div class="row mb-3">
+												<div class="col-md-12" >
+													<label for="simpleinput" class="form-label">Remarks</label>
+													<textarea id="txt_client_remarks" class="form-control" rows="3" placeholder="Notes / Remarks"></textarea>
+												</div>
+											</div>
+											<hr>
+											<div class="row mb-3">
+												<div class="col-md-12" >
+													<h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Additional Details</h5>
+													<div class="col-xl-12">
+														<table  data-buttons-class="xs btn-light" class="table mb-0" id="tbl_additional">
+															<thead>
+																<tr>
+																	<th>Type</th>
+																	<th>Value</th>
+																	<th>Action</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr id="base_row">
+																	<td width="30%">
+																	<select id="dd_additional" style="width:100%" class="form-control populate">
+																	</select>
+																	<ul id="dd_additional_error" class="help-block list-unstyled" style="display: none;"><li class="required" style="display: list-item;">This value is required.</li></ul>
+																	</td>
+																	<td width="30%"><input type="text" class="form-control marginBottom10px" id="txt_value" placeholder="Required Field"  maxlength="50" >
+																		<ul id="txt_value_error" class="help-block list-unstyled" style="display: none;"><li class="required" style="display: list-item;">This value is required.</li></ul></td>
+																	<td width="20%">
+																	<button type="button" class="btn_add_additional btn btn-primary waves-effect waves-light" data-mode="0">
+																		<i class="fa fa-plus fa-fw" aria-hidden="true"></i>
+																	</button>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</form>
+										<div class="row mb-3">
+											<div class="col-md-12" style="text-align:right;" id="div_btn">
+												<button class="btn-primary btn waves-effect waves-light" id="client_details_toggle"><i class="fa fa-chevron-up"></i></button>
+												<button type="button" id="btn_cancel" class="btn btn-light waves-effect waves-light" ><i class="fa fa-times"></i> Cancel</button>
+												<button type="button" id="btn_save" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-content-save-outline"></i> Save</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- sub div starts -->
+					<div class="col-xl-12" id="div_sub_details" >
+						<div class="col-sm-12">
+							<div class="panel panel-primary">
+								<div class="card mb-0">
+									<div class="col-xl-12">
+										<ul class="nav nav-tabs nav-bordered nav-justified">
+											<li class="nav-item">
+												<a href="#contacts-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+													Contacts
+												</a>
+											</li>
+											<li class="nav-item">
+												<a href="#communications-b2" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+													Communications
+												</a>
+											</li>
+											<li class="nav-item">
+												<a href="#transfer-contacts-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+													Transfer Contacts
+												</a>
+											</li>
+											<li class="nav-item">
+												<a href="#documents-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+													Documents
+												</a>
+											</li>
+											<li class="nav-item">
+												<a href="#assign-principal-account-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+													Assign Principal Account
+												</a>
+											</li>
+										</ul>
+										<div class="tab-content">
+											<div class="tab-pane active" id="contacts-b2">
+												<div class="card mb-0">
+													<div class="card-body">
+														<div class="row mb-3">
+															<div style="text-align:right;">
+																<button type="button" id="btn_add_pic" class="btn btn-danger waves-effect waves-light" 
+																	onclick="$.fn.contact_form()">
+																	<i class="mdi mdi-plus-circle me-1" aria-hidden="true"></i>
+																	<span class="hidden-xs">Add new contact</span>
+																</button>
+															</div>
+														</div>
+														<div id="new_contact_div" class="mt-3" style="display:none;">
+															<form class="form-horizontal" id="contacts_form">
+																<h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Person Details</h5>
+																
+																<div class="row mb-3">
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Name <span class="error_color">*</span></label>
+																		<input id="txt_contact_id" type="hidden">
+																		<input id="txt_name" type="text" class="form-control" required>
+																	</div>
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Email <span class="error_color">*</span></label>
+																		<input id="txt_email" type="email" name="email_id" class="form-control" required data-remote="validate_contact_email" data-remote-message="Email ID already exists">
+																	</div>
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Password <span class="error_color">*</span></label>
+																		<input id="txt_password" type="password" class="form-control" required>
+																	</div>
+																</div>
+																
+																<div class="row mb-3">
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Mobile <span class="error_color">*</span></label>
+																		<input id="txt_mobile_no" type="text" class="form-control" required>
+																	</div>
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Designation <span class="error_color">*</span></label>
+																		<input id="txt_designation" type="text" class="form-control" required>
+																	</div>
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Status</label>
+																		<select id="dd_contact_status" style="width:100%" class="form-control populate">
+																		</select>
+																	</div>
+																</div>
+																
+																<div class="row mb-3">
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">User Status</label>
+																		<select id="dd_user_status" style="width:100%" class="form-control populate">
+																			<option value="1">ACTIVE</option>
+																			<option value="0">IN-ACTIVE</option>
+																		</select>
+																	</div>
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Notification</label><br>
+																		<input class="form-check-input" type="checkbox" id="chk_client_notification" name="chk_client_notification" checked="checked"> &nbsp;Is Notification Sent?
+																	</div>
+																	<div class="col-md-4" >
+																		<label for="simpleinput" class="form-label">Name Card</label><br>
+																		<span class="btn btn-blue waves-effect waves-light fileinput-button" id="btn_add_image">
+																			<span><i class="mdi mdi-upload"></i></span> Upload file
+																			<input id="fileupload" type="file"  name="qqfile">
+																		</span>
+																		<div id="name_card_div">
+																			<div class="form-group">
+																				<div id="name_card_attachment"></div>
+																				<div id="files" class="files"></div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-12 mt-3">
+																		<label for="simpleinput" class="form-label">Offerings</label>
+																		<select id="dd_offerings" multiple="multiple" class="form-control populate" style="width:100%;">
+																		</select>
+																	</div>
+																</div>
+																
+																<h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Additional Details</h5>
+																<div id="additional_div"></div>
+																<div class="row mb-3">
+																	<div class="col-md-12" style="text-align:right;" id="div_btn"> 
+																		<button class="btn-success btn waves-effect waves-light" id="add-condition"><i class="fa fa-plus"></i> Add Row</button>
+																		<button id="btn_contact_cancel" type="button" class="btn btn-light waves-effect waves-light" data-dismiss="modal">Cancel</button>
+																		<button id="btn_contact_save" data-mode="add" type="button" class="btn btn-info waves-effect waves-light" data-style="expand-left" data-spinner-color="#000000">Save</button>
+																	</div>
+																</div>
+															</form>
+															<hr>
+														</div>
+														<table  data-buttons-class="xs btn-light" class="table mb-0" style="width:100%;">
+															<thead >
+																<tr>
+																	<th></th>
+																	<th>Name</th>
+																	<th>Email</th>
+																	<th>Mobile No</th>
+																	<th>Designation</th>
+																	<th>Name Card</th>
+																</tr>
+															</thead>
+															<tbody id="table_pic_list">
+															</tbody>
+														</table>
+													</div>
+												</div>	
+											</div>
+											<div class="tab-pane" id="communications-b2">
+												<div class="card mb-0">
+													<div class="card-body">
+														<div class="row mb-3">
+															<div class="col-md-6" >
+																<label for="simpleinput" class="form-label">Contacted</label>
+																<select id="dd_com_contact" style="width:100%" class="form-control populate" required>                     
+																</select>
+															</div>
+															<div class="col-md-6" >
+																<label for="simpleinput" class="form-label">Contact Medium <span class="error_color">*</span></label>
+																<select id="dd_com_medium" style="width:100%" class="form-control populate" required>
+																</select>
+															</div>
+														</div>
+														<div class="col-md-1 mb-3" style="float:left;text-align:center;">
+															<div class="avatar-initials" width="30" height="30" data-name="" ></div>
+														</div>
+														<div class="col-md-11 mb-3" style="float:left;">
+															<div class="border rounded" style="padding:0" id="div_trail_btn">
+																<textarea id="txt_comm" rows="3" maxlength="2000" class="form-control border-0 resize-none" placeholder="Your message..."></textarea>
+
+																<div class="p-2 bg-light d-flex justify-content-between align-items-center">
+																	<div >
+																		<a href="#" id="btn_upload_reply" class="btn btn-sm px-1 btn-light fileinput-button"><i class="mdi mdi-upload"></i> <input id="fileupload_reply" type="file" name="qqfile"></a>
+																	</div>
+																	<button type="button" id="btn_comm_save" class="btn btn-sm btn-success"><i class="mdi mdi-send me-1"></i>Submit</button>
+																</div>
+																<div id="files_reply"></div>
+															</div>
+															<div class="col-sm-1"></div>
+															<div class="col-sm-11">
+																<div class="tab-pane active" id="div_comm"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="transfer-contacts-b2">
+												<div class="card mb-0">
+													<div class="card-body">
+														<div class="row mb-3">
+															<div class="col-md-2" >
+																<label for="simpleinput" class="form-label">&nbsp;</label><br>
+																<h4 style="float:left;">Contacts List</h4>&nbsp;&nbsp;<span class="badge rounded-pill bg-warning small-pill" style="margin-top:10px;" id="total_contacts">0</span>
+															</div>
+															<div class="col-md-4" >
+																<label for="simpleinput" class="form-label">Created By</label>
+																<select id="dd_employees" style="width:100%" class="form-control populate">
+																</select>	
+															</div>
+															<div class="col-md-4" >
+																<label for="simpleinput" class="form-label">Transfer To</label>
+																<select id="dd_assign_to" style="width:100%" class="form-control populate" required="required">
+																</select>
+															</div>
+															<div class="col-md-2" style="text-align:right;" >
+																<label for="simpleinput" class="form-label">&nbsp;</label><br>
+																<button type="button" class="btn btn-success waves-effect waves-light" id="btn_assign_contact">Save</button>
+															</div>
+															<hr class="mt-3">
+															<input type="hidden" name="client_id" id="client_id">
+															<table class="table mb-0" id="tbl_contact_list">
+																<thead >
+																	<tr>
+																		<th>#</th>
+																		<th>Name</th>
+																		<th>Email</th>
+																		<th>Mobile</th>
+																		<th>Created By</th>
+																	</tr>
+																</thead>
+																<tbody>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="documents-b2">
+												<div class="card mb-0">
+													<div class="card-body">
+														<div class="row mb-3">
+															<div class="col-md-12" >
+																<label for="simpleinput" class="form-label">&nbsp;</label>
+																<h4 style="float:left;">Documents List</h4>&nbsp;&nbsp;<span class="badge rounded-pill bg-warning small-pill" style="margin-top:10px;" id="total_documents">0</span>
+															</div>
+														</div>
+														<div id="documentsList" class="col-sm-12">
+															<table class="table mb-0" id="tbl_document_list">
+																<thead >
+																	<tr>
+																		<th>Document No</th>
+																		<th>Contact</th>
+																		<th>Date</th>
+																		<th>Category</th>
+																		<th>Status</th>
+																		<th>Files</th>
+																	</tr>
+																</thead>
+																<tbody>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane" id="assign-principal-account-b2">
+												<div class="card mb-0">
+													<div class="card-body">
+														<div class="row mb-3">
+															<div class="col-md-12" >
+																<label for="simpleinput" class="form-label">&nbsp;</label>
+																<h4 style="float:left;">Accounts List</h4>&nbsp;&nbsp;<span class="badge rounded-pill bg-warning small-pill" style="margin-top:10px;" id="total_principal">0</span>
+															</div>
+															<div id="contacts_panel_head">
+																<form class="form-horizontal row mt-3" data-validate="parsley" id="principal_form">
+																	<div class="col-md-3" >
+																		<label for="simpleinput" class="form-label">Principal a/c</label>
+																		<select id="dd_principal_accounts" style="width:100%" class="form-control populate" required>
+																		</select>
+																	</div>
+																	<div class="col-md-3" >
+																		<label for="simpleinput" class="form-label">Offering</label>
+																		<select id="dd_offerings_principal" style="width:100%" class="form-control populate" required>
+																		</select>
+																	</div>
+																	<div class="col-md-3" >
+																		<label for="simpleinput" class="form-label">A/c Manager</label>
+																		<select id="dd_managers_principal" style="width:100%" class="form-control populate" required>
+																		</select>
+																	</div>
+																	<div class="col-md-3" style="text-align:right;" >
+																		<label for="simpleinput" class="form-label">&nbsp;</label><br>
+																		<button type="button" class="btn btn-success waves-effect waves-light" id="btn_save_principal">Save</button>
+																	</div>
+																</form>
+																<hr class="mt-3">
+																<div id="principalList" class="col-sm-12">
+																	<table class="table mb-0" id="tbl_principal_list">
+																		<thead >
+																			<tr>
+																				<th>#</th>
+																				<th>Pricipal Account</th>
+																				<th>Offering</th>
+																				<th>Account Manager</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																		</tbody>
+																	</table>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- sub div ends -->
+				</div>
+				
+            </div>
+        </div> <!-- end card-->
+    </div> <!-- end col -->
+</div>

@@ -1,0 +1,247 @@
+
+<style>
+      body .magnify-modal {
+            box-shadow: 0 0 6px 2px rgba(0, 0, 0, .3);
+            width: 100% !important;
+            height: 100% !important;
+            left: 0 !important;
+            top: 0 !important;
+        }
+        body .magnify-button {
+            color: #fff;
+        }
+    .magnify-header .magnify-toolbar {
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .magnify-stage {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-width: 0;
+    }
+
+    .magnify-footer {
+      bottom: 10px;
+    }
+
+    .magnify-footer .magnify-toolbar {
+      background-color: rgba(0, 0, 0, .5);
+      border-radius: 5px;
+    }
+
+    .magnify-loader {
+      background-color: transparent;
+    }
+
+    .magnify-header,
+    .magnify-footer {
+      pointer-events: none;
+    }
+
+    .magnify-button {
+      pointer-events: auto;
+    }
+    body .modal{
+        background: #000000b8;
+    }
+    .buttonsToHide{
+        display: none;
+    }
+    .btns{
+        text-decoration: underline;
+        color: blue;
+    }
+</style>
+
+    
+<div class="row mt-3 mb-1">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title" style="float:left">Attendance</span></h4>
+            <div class="mt-3" style="float:right">
+                <button type="button" id="btn_search_action" class="btn btn-success" ><i class="fe-search me-1"></i> Search</button>                    
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div id="div_search" class="col-xl-12 mb-4"   style="display: none;" >
+    <div class="col-12 pe-0">
+        <div class="card">
+            <div class="card-body">
+                <div class="float-end">
+                    <a id="btn_close_search" href="javascript:void(0)">
+                        <i class="mdi mdi-close-box m-0 text-muted h3"></i>
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-group condition-row d-block">
+                    
+                    <div class="row mb-3">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="control-label">Date</label>
+                                </div>
+                                <div class="col-7">
+                                    <div class="errorContainer" id="date_container">
+                                        <input type="text" id="doc_date" class="form-control flatpickr-input" placeholder="01-01-2021 to 31-12-2022" readonly="readonly">
+                                        <input type="hidden" id="from_date">
+                                        <input type="hidden" id="to_date">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="control-label">Employee</label>
+                                </div>
+                                <div class="col-7">
+                                    <div class="errorContainer">
+                                        <select style="width:100%" class="select2Plugin search-field populate" id="dd_employee_search">
+                                            <option value="">Please Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row"> 
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label  class="control-label">Status</label>
+                                </div>
+                                <div class="col-7">
+                                    <div class="errorContainer">
+                                        <select style="width:100%" class="select2Plugin search-field populate" id="dd_status_search">
+                                            <option value="">Please Select</option>
+                                        </select>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label  class="control-label">Projects</label>
+                                </div>
+                                <div class="col-7">
+                                    <div class="errorContainer">
+                                        <select style="width:100%" class="select2Plugin search-field populate" id="dd_project_search">
+                                            <option value="">Please Select</option>
+                                        </select>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="form-group align-right">
+                    <button id="btn_reset" type="button" class="btn btn-light waves-effect waves-light m-1"><i class="fe-refresh-cw me-1"></i> Reset</button>
+                    <button id="btn_search" type="button" class="btn btn-success waves-effect waves-light mt-1 mb-1"><i class="fe-search me-1"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-end">
+                    <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <p class="dropdown-item"  onclick="exportTable2CSVAL('Attendance','tbl_list')" style="cursor: pointer;">Export as Excel</p>
+                        <p class="dropdown-item"  onclick="exportTable2PDF('Attendance','tbl_list','p')" style="cursor: pointer;">Export as PDF</p>
+                    </div>
+                </div>
+                <div class="table-responsive  mt-0">
+                    <table class="table table-centered table-striped w-100"  id="tbl_list">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Work day</th>
+                                <th>Check-in time</th>
+                                <th>Check-out time</th>
+                                <th>Break start</th>
+                                <th>Break end</th>
+                                <th>Temperature</th>
+                                <th>Image</th>
+                                <th>Remarks</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>    
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> <!-- end card-->
+    </div> <!-- end col -->
+</div>
+
+    
+
+
+<!-- START MODALS -->
+<div class="modal fade imgcountmodal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close closebtn" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row" id="img_row"></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reject_remark_modal" tabindex="-1" role="dialog" aria-labelledby="changePwdModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" >
+                <h4 class="modal-title" style="float:left" id="myModalLabel">Reject Remark</h4>
+                <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <form class="form-horizontal" id="change_pwd_form" data-parsley="validate">
+                    <div class="row mt-2">
+                        <div class="row">
+                        <label for="txt_current_pwd" class="col-4 col-form-label">Remark</label>
+                        <div class="col-8 errorContainer">
+                            <div class="input-group input-group-merge">
+                                <input id="work_id_hidden" type="text" class="form-control" hidden>
+                                <textarea class="form-control" id="reject_remark" data-work="" cols="45" rows="3"></textarea>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" id="div_response" style="margin-top: 20px;margin-right: 20px;margin-left: 2px;"></div>
+                   
+                </form>
+            </div>
+
+            <div class="modal-footer" id="div_footer" style="margin-right: 22px;">
+                <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                <button id="add_reject_rzn_btn" type="button" class="btn btn-success" data-style="expand-left" data-spinner-color="#000000">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MODALS -->

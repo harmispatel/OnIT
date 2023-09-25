@@ -1,0 +1,135 @@
+<style>
+	.buttonsToHide{
+        display: none;
+    }
+</style>
+<link href="./assets/libs/flatpickr/plugins/monthSelect/style.css" rel="stylesheet" type="text/css" />
+
+
+<div class="row mt-3 mb-1" >
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title" style="float:left">Attendance - Reports</h4>
+			<div class="mt-3" style="float:right">
+				<button type="button" data-color="green" id="showSearchDiv" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-magnify"></i> Search</button>
+			</div>
+        </div>
+    </div>
+</div>
+<!-- SEARCH DIV -->
+<div class="col-xl-12 mb-4"  id="searchDiv">
+	<div class="card mb-0">
+		<div class="card-body">
+			<div class="float-end">
+				<a id="closeSearch" href="javascript:void(0)">
+					<i class="mdi mdi-close-box m-0 text-muted h3"></i>
+				</a>
+			</div>
+			<div class="clearfix"></div>
+			<!-- SEARCH ROW 1 -->
+				<div class="col-xl-12">
+					<div class="row">
+						<form class="form-horizontal" data-validate="parsley" id="detail_form">
+							<div class="form-group condition-row">
+								<!-- <label class="col-sm-1 control-label">Start Date</label>
+								<div class="col-sm-2 errorContainer">
+									<input class="form-control" id="start_date" type="date" name="startDate">
+								</div> -->
+					
+								<label class="col-sm-1 control-label">Date</label>
+								<!-- <input type="checkbox" id="chk_is_date" class="col-sm-2 form-check-input" name="chk_is_date" checked> -->
+								<div class="col-sm-5 errorContainer" id="date_container">
+									<input type="text" id="doc_date" class="form-control flatpickr-input" placeholder="01-01-2021 to 31-12-2022" readonly="readonly">
+									<input type="hidden" id="from_date">
+									<input type="hidden" id="to_date">
+								</div>
+
+								<label class="col-sm-1 control-label">User</label>
+								<div class="col-sm-2 errorContainer">
+									<select style="width:100%" class="select2Plugin search-field" id="employee_select" name="employee_search_field">
+										<option value="">Please Select</option>
+									</select>
+								</div>
+							</div>
+						</form>
+				   </div>
+					<!-- <div class="col-xl-6 searchCol">
+						
+				   </div>
+					<div class="col-xl-6 searchCol">
+						<div class="row">
+						   <div class="col-md-4">
+							   <label for="simpleinput" class="col-form-label">Employee</label>
+						   </div>
+						   <div class="col-md-8">
+							   <select class="form-control" id="dd_employee" data-toggle="select2" data-width="100%">
+								</select>
+						   </div>
+					   </div>
+				   </div>				    -->
+				</div>
+			<!-- SEARCH ROW 1 -->
+			<!-- SEARCH ROW 2 -->
+				<div class="col-xl-12 searchCol" style="text-align:right;overflow:auto;">
+					<div>
+						<button type="button" id="btn_reset" class="btn btn-light waves-effect waves-light" ><i class="mdi mdi-refresh"></i> Reset</button>
+						<button type="submit" id="btn_search" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-magnify"></i> Search</button>
+					</div>
+				</div>
+			<!-- SEARCH ROW 2 -->
+		</div>
+	</div>
+</div>
+<!-- SEARCH DIV -->
+<div class="row">
+    <div class="col-xl-12">		
+		<div class="card mb-0">
+			<div class="card-body">
+				<!-- <h4 class="modal-title" >Attendance Report</h4> -->
+				<h4 id="lbl_sync_time"></h4>
+				<div class="col-xl-12" style="text-align:right;">
+						<div class="dropdown float-end">
+                        <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" style="text-align:left" href="javascript:void(0)" onclick="exportTable2CSVAR('Attendance Report','tbl_list')" id="download_excel">Excel File</a>
+							<a class="dropdown-item" style="text-align:left" href="javascript:void(0)" onclick="exportTable2PDF('Attendance Report','tbl_list','p')" id="download_pdf">PDF File (*.pdf)</a>
+                        </div>
+                    </div>
+					</div>
+				 <div class="table-responsive">
+					<div class="table-responsive">
+						<table class='table panel-table' id="tbl_list">
+							<thead>
+								<tr>
+									<th>Name(Office Email)</th>
+									<th>Total worked days</th>
+									<th>Total break days</th>
+									<th>Total ot days</th>
+									<th>EL</th>
+									<th>ML</th>
+									<th>AL</th>
+									<th>UL</th>
+									<!-- <th>Claims Details</th>
+									<th>Total Claims</th>
+									<th class="cell-shrink">No Show Remarks</th> -->
+								</tr>
+							</thead>
+							<tbody id="tbody">
+							</tbody>
+						</table>
+					</div>
+					
+					<div class="load-more text-center" style="display: none;">
+						<a class="btn btn-info btn-xs" id="btn_load_more"><span class="fa fa-arrow-down fa-fw"></span>Load More<span class="fa fa-arrow-down fa-fw"></span></a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+
+<script src="./assets/libs/flatpickr/plugins/monthSelect/index.js"></script>

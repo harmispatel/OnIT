@@ -1,0 +1,1485 @@
+<!-- List Block -->
+<div class="row" id="list_div">
+    <!-- start page title -->
+    <div class="row mt-3 mb-1">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <a href="javascript:void(0);" id="btn_search" class="btn btn-success mb-2"><i class="fe-search me-1"></i>Search</a>
+                    <a href="javascript:void(0);" id="btn_new" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-1"></i>Add</a>
+                </div>
+                <h4 class="page-title">Users
+                    &nbsp;&nbsp;<span class="total-results badge rounded-pill bg-warning small-pill">0</span>
+                </h4>
+            </div>
+        </div>
+    </div>     
+    <!-- end page title --> 
+
+    <div id="searchPanel" class="row" style="display: none;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    
+                    <div class="float-end">
+                        <a id="btn_close_search" href="javascript:void(0)">
+                            <i class="mdi mdi-close-box m-0 text-muted h3"></i>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                    <form class="form-horizontal">
+
+                        <div class="row mt-2">
+                            <div class="col-lg-6">
+                                <!-- Name -->
+                                <div class="row">
+                                    <label for="txt_name_search" class="col-4 col-form-label">Name</label>
+                                    <div class="col-7 errorContainer">
+                                        <input type="text" class="form-control" id="txt_name_search" placeholder="Candidate Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <!-- Active Status -->
+                                <div class="row">
+                                    <label for="dd_status_search" class="col-4 col-form-label">Active Status</label>
+                                    <div class="col-7 errorContainer">
+                                        <select id="dd_status_search" class="form-control populate" data-width="100%">
+                                            <option value="">Please Select</option>
+                                            <option value="1" selected>Active</option>
+                                            <option value="0">In-Active</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <!-- <div class="col-lg-6">
+                                <div class="row">
+                                    <label for="dd_client_search" class="col-4 col-form-label">Client</label>
+                                    <div class="col-7 errorContainer">
+                                        <select id="dd_client_search" class="form-control populate" data-width="100%">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-6">
+                                <!-- Email -->
+                                <div class="row">
+                                    <label for="txt_email_search" class="col-4 col-form-label">Email</label>
+                                    <div class="col-7 errorContainer">
+                                        <input type="text" class="form-control" id="txt_email_search" placeholder="Optional">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <!-- Created By -->
+                                <div class="row">
+                                    <label for="dd_created_by_search" class="col-4 col-form-label">Created By</label>
+                                    <div class="col-7 errorContainer">
+                                        <select id="dd_created_by_search" class="form-control populate" data-width="100%">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            
+                        </div>
+
+                        <div class="form-group align-right">
+                            <button id="btn_reset" type="button" class="btn btn-light waves-effect waves-light m-1"><i class="fe-refresh-cw me-1"></i> Reset</button>
+                            <button id="btn_search_action" type="button" class="btn btn-success waves-effect waves-light mt-1 mb-1"><i class="fe-search me-1"></i> Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tblList" class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="dropdown float-end">
+                        <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <p class="dropdown-item"  onclick="exportTable2CSV('Users','tbl_list')" style="cursor: pointer;">Export as Excel</p>
+                            <p class="dropdown-item"  onclick="exportTable2PDF('Users','tbl_list','p')" style="cursor: pointer;">Export as PDF</p>
+                        </div>
+                    </div>
+                    <div class="table-responsive mt-3">
+                        <table id="tbl_list" class="table table-centered table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Designation</th>
+                                    <th>Email</th>
+                                    <th>Mobile No.</th>
+                                    <th>Status</th>
+                                    <th>Created By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                        <!-- <div class="d-flex justify-content-center">
+                            <button id="btn_load_more" onclick="$.fn.get_list(true);" type="button" class="btn btn-sm btn-info waves-effect waves-light rounded-pill ">
+                                <i class="fa fa-arrow-down"></i>&nbsp;&nbsp;Load More&nbsp;&nbsp;<i class="fa fa-arrow-up"></i>
+                            </button>
+                        </div> -->
+                    </div>
+                </div>
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+</div>
+
+<!-- Add,Edit User Block -->
+<div class="row" id="new_div" style="display: none">
+    <!-- end page title -->
+    <!-- start page title -->
+    <div class="row mt-3 mb-1">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <a href="javascript:void(0);" id="btn_back" class="btn btn-outline-dark waves-effect waves-light"><i class="fe-arrow-left me-1"></i>Back</a>
+                </div>
+                <h4 class="page-title">User Details</h4>
+            </div>
+        </div>
+    </div>     
+    <!-- end page title --> 
+
+    <div class="row">
+
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-4" id="h4_primary_no">User ID : -</h4>
+                    <ul class="nav nav-tabs nav-bordered nav-justified">
+                        <li class="nav-item" id="detail-tab">
+                            <a href="#tab-detail" data-bs-toggle="tab" aria-expanded="true" class="nav-link active">
+                                Details
+                            </a>
+                        </li>
+                        <li class="nav-item" id="additional-tab">
+                            <a href="#tab-additional" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                Additional Details
+                            </a>
+                        </li>
+                        <li class="nav-item" id="permission-tab">
+                            <a href="#tab_p" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                Permission
+                            </a>
+                        </li>
+                        <li class="nav-item" id="tab_assets">
+                            <a href="#tab_a" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                Assets
+                            </a>
+                        </li>
+                        <li class="nav-item" id="tab_leaves">
+                            <a href="#tab_l" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                Leaves
+                            </a>
+                        </li>
+                        <li class="nav-item" id="tab_wh">
+                            <a href="#tab_w" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                Work History
+                            </a>
+                        </li>
+                        <li class="nav-item" id="tab_attach">
+                            <a href="#tab_att" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                Documents
+                            </a>
+                        </li>
+                        <li class="nav-item" id="tab_exit">
+                            <a href="#tab_e" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                Exit Checklist
+                            </a>
+                        </li>
+                       
+                    </ul>
+                    <div class="tab-content">
+                        <!--Details-->
+                        <div class="tab-pane active" id="tab-detail">
+                            <form class="form-horizontal" data-validate="parsley" id="detail_form">
+
+                                <!-- <div class="d-flex align-items-start">
+                                    <img class="d-flex align-items-start rounded me-2" src="assets/images/users/user-1.jpg" alt="Dominic Keller" height="200">
+                                    <div class="w-100 ps-1">
+                                        <div id="fine-uploader_quotation"></div>
+                                    </div>
+                                </div> -->
+
+                                <div class="row justify-content-end">
+                                    <div class="col-lg-3">
+                                        <div class="mt-3">
+                                            <div title="Profile Pic" id="btn_upload_client" class="fileinput-button">
+                                                <input type="file" class="fileupload" name="qqfile" id="img_emp_photo" data-show-remove="false" data-allowed-file-extensions="jpg jpeg png" />
+                                                <img id="pp-img" src="./assets/images/users/default.jpg" onerror="this.onerror=null;this.src='./assets/images/users/default.jpg';" style="width:100%;height: 100%;">
+                                            </div>
+                                        </div>
+                                        <div id="files"></div>
+                                    </div>
+                                </div> <!-- end row -->
+
+                                <div class="row mt-5">
+                                    <div class="col-lg-6">
+                                        <!-- Name -->
+                                        <div class="row">
+                                            <label for="txt_employee_name" class="col-4 col-form-label">Type</label>
+                                            <div class="col-7 errorContainer">
+                                                <select id="dd_type" style="width:100%" class="populate">
+                                                    <option value="0">Internal</option>
+                                                    <option value="1">External</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Name -->
+                                        <div class="row">
+                                            <label for="txt_employee_name" class="col-4 col-form-label">Name <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text" required  class="form-control" id="txt_employee_name"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- NRIC/Passport -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_nric" class="col-4 col-form-label">NRIC/Passport <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text" data-parsley-required="true"  class="form-control" id="txt_nric"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Designation -->
+                                        <div class="row">
+                                            <label for="txt_designation" class="col-4 col-form-label">Designation <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <input id="txt_designation" type="text" required class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Sex -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_designation" class="col-4 col-form-label">Sex <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" data-toggle="select2" data-width="100%" id="dd_sex" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Personal Email -->
+                                        <div class="row">
+                                            <label for="txt_email" class="col-4 col-form-label">Personal Email <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="email" required parsley-type="email"  class="form-control" id="txt_email" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Office Email -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_office_email" class="col-4 col-form-label">Office Email <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="email" required parsley-type="email"  class="form-control" id="txt_office_email" />
+                                                <ul id="txt_office_email_error" class="help-block list-unstyled" style="display: none;" ><li class="required" style="display: list-item;">Office Email should not be same as Personal Email</li></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Employer -->
+                                        <div class="row">
+                                            <label for="dd_employer" class="col-4 col-form-label">Employer <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" data-toggle="select2" data-width="100%" id="dd_employer" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Employment Type -->
+                                        <div class="row justify-content-end">
+                                            <label for="dd_contract_type" class="col-4 col-form-label">Employment Type <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" id="dd_contract_type" data-toggle="select2" data-width="100%" data-parsley-required="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Tel no (home country) -->
+                                        <div class="row">
+                                            <label for="txt_home_phone" class="col-4 col-form-label">Tel. No.(Home Country)</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="digit"  class="form-control" id="txt_home_phone" data-parsley-type="digits" placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Working Time -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_malaysia_phone" class="col-4 col-form-label">Mobile No.(Malaysia) <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="row">
+                                                    <div class="col-6 errorContainer">
+                                                        <select id="dd_mobile_code" data-parsley-required="true" name="dd_mobile_code" aria-label="Country Code" data-control="select2" data-placeholder="Country Code" data-width="100%" class="populate">
+                                                            <option value="">Country Code</option>
+                                                            <option data-kt-flag="flags/malaysia.svg" value="+60">Malaysia (+60)</option>						
+                                                            <option data-kt-flag="flags/india.svg" value="+91">India (+91)</option>
+                                                            <option data-kt-flag="flags/indonesia.svg" value="+62">Indonesia (+62)</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-6 errorContainer">
+                                                        <input type="digit" data-parsley-required="true"  class="form-control" id="txt_malaysia_phone" data-parsley-type="digits" placeholder="" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Home Address -->
+                                        <div class="row">
+                                            <label for="txt_home_address" class="col-4 col-form-label">Home Address</label>
+                                            <div class="col-7 errorContainer">
+                                                <textarea class="form-control" id="txt_home_address" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Address in Malaysia -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_address_malaysia" class="col-4 col-form-label">Address in Malaysia</label>
+                                            <div class="col-7 errorContainer">
+                                                <textarea class="form-control" id="txt_address_malaysia" rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Home Country -->
+                                        <div class="row">
+                                            <label for="dd_home_country" class="col-4 col-form-label">Home Country</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" id="dd_home_country" data-toggle="select2" data-width="100%" id="dd_home_country">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Nationality -->
+                                        <div class="row justify-content-end">
+                                            <label for="dd_nationality" class="col-4 col-form-label">Nationality</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate"  id="dd_nationality" data-toggle="select2" data-width="100%" id="dd_nationality">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Race -->
+                                        <div class="row">
+                                            <label for="txt_race" class="col-4 col-form-label">Race</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_race"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Religion -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_religion" class="col-4 col-form-label">Religion</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_religion"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Marital Status -->
+                                        <div class="row">
+                                            <label for="dd_marital_status" class="col-4 col-form-label">Marital Status <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" data-toggle="select2" data-width="100%" id="dd_marital_status" data-parsley-required="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Office Tel No -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_office_phone" class="col-4 col-form-label">Office Tel No</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text" class="form-control" id="txt_office_phone"  placeholder="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Department -->
+                                        <div class="row">
+                                            <label for="dd_department" class="col-4 col-form-label">Department</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" data-toggle="select2" data-width="100%" id="dd_department">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Notice Period -->
+                                        <div class="row justify-content-end">
+                                            <label for="dd_notice_period" class="col-4 col-form-label">Notice Period</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" id="dd_notice_period" data-toggle="select2" data-width="100%" id="dd_notice_period">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Date of Birth -->
+                                        <div class="row">
+                                            <label for="dob_date" class="col-4 col-form-label">Date of Birth</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control flatpickr-input" id="dob_date">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Place of Birth -->
+                                        <div class="row justify-content-end">
+                                            <label for="dob_date" class="col-4 col-form-label">Place of Birth</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_birth_place"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Working Time -->
+                                        <div class="row">
+                                            <label for="shift_st_start_time" class="col-4 col-form-label">Working Time <span class="text-danger">*</span></label>
+                                            <div class="col-7">
+                                                <div class="row">
+                                                    <div class="col-6 errorContainer">
+                                                        <!-- <input type="text" id="shift_st_start_time" value="9:00 AM" class="form-control tp-time ui-timepicker-input" style="box-sizing: border-box !important;"autocomplete="off" required="required"> -->
+                                                        <input type="text" id="shift_st_start_time" value="" class="form-control" data-parsley-required="true">
+                                                    </div>
+                                                    <div class="col-6 errorContainer">
+                                                        <input type="text" id="shift_st_end_time" value="" class="form-control" data-parsley-required="true">
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Timezone -->
+                                        <div class="row justify-content-end">
+                                            <label for="dd_timezone" class="col-4 col-form-label">Timezone <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" id="dd_timezone" data-toggle="select2" data-width="100%" id="dd_timezone" data-parsley-required="true">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Start Date -->
+                                        <div class="row">
+                                            <label for="start_date" class="col-4 col-form-label">Start Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group" data-placement="top" data-align="top" data-autoclose="true">
+                                                    <input type="text" class="form-control" id="start_date">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- End Date -->
+                                        <div class="row justify-content-end">
+                                            <label for="end_date" class="col-4 col-form-label">End Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group" data-placement="top" data-align="top" data-autoclose="true">
+                                                    <input type="text" class="form-control" id="end_date">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Salary -->
+                                        <div class="row">
+                                            <label for="txt_salary" class="col-4 col-form-label">Salary <span class="text-danger">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="number" id="txt_salary" data-parsley-type="number" max="999999" min="1" class="form-control" placeholder="" data-parsley-required="true" oninput="checkNumberMinMax(this)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Reporting To -->
+                                        <div class="row justify-content-end">
+                                            <label for="dd_reporting_to" class="col-4 col-form-label">Reporting To</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" id="dd_reporting_to" data-toggle="select2" data-width="100%" id="dd_reporting_to">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Onboarding Reference -->
+                                        <div class="row">                                                                                                                                  
+                                            <label for="txt_user_no" class="col-4 col-form-label">User No</label>                                        
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_user_no"  />
+                                            </div>                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Active Status -->
+                                        <div class="row justify-content-end">
+                                            <label for="dob_date" class="col-4 col-form-label">Active Status</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="checkbox" id="chk_is_active" class="js-switch" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Active Status -->
+                                        <div class="row">
+                                            <label class="col-4 col-form-label">LinkedIn URL</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text" id="txt_linkedin_url" value="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2" id="leave_div" style="display:none">
+                                    <div class="col-lg-6">
+                                        <!-- Leaving Date -->
+                                        <div class="row">
+                                            <label for="leave_date" class="col-4 col-form-label">Leaving Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group" data-placement="top" data-align="top" data-autoclose="true">
+                                                    <input type="text" class="form-control" id="leave_date">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Reason -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_leave_reason" class="col-4 col-form-label">Reason</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_leave_reason"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>   
+                        </div>
+                        <!--Details-->
+
+                        <!--Additional Details-->
+                        <div class="tab-pane" id="tab-additional">
+                            <form class="form-horizontal" data-validate="parsley" id="additional_form">
+                                
+                                <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Employment Permit</h5>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Applied date -->
+                                        <div class="row">
+                                            <label for="txt_ep_applied_date" class="col-4 col-form-label">Applied date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group " data-placement="top" data-align="top" data-autoclose="true">
+                                                    <input type="text" class="form-control" id="txt_ep_applied_date" placeholder="e.g dd-mmm-yyyy">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Expiry date -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_ep_expiry_date" class="col-4 col-form-label">Expiry date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group " data-placement="top" data-align="top" data-autoclose="true">
+                                                    <input type="text" class="form-control" id="txt_ep_expiry_date" placeholder="e.g dd-mmm-yyyy">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <!-- <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Skills</h5>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                       
+                                        <div class="row">
+                                            <label for="dd_general_skills" class="col-4 col-form-label">Soft Skills</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate-multiple" id="dd_general_skills" data-toggle="select2" data-width="100%" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        
+                                        <div class="row justify-content-end">
+                                            <label for="dd_specific_skills" class="col-4 col-form-label">Technical Skills</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate-multiple" id="dd_specific_skills" data-toggle="select2" data-width="100%" multiple>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr> -->
+
+                                <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Spouse Details</h5>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Spouse Name -->
+                                        <div class="row">
+                                            <label for="txt_spouse_name" class="col-4 col-form-label">Spouse Name</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_spouse_name"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Occupation -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_spouse_occupation" class="col-4 col-form-label">Occupation</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_spouse_occupation"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Date of Marriage -->
+                                        <div class="row">
+                                            <label for="marriage_date" class="col-4 col-form-label">Date of Marriage</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group " data-placement="top" data-align="top" data-autoclose="true">
+                                                    <input type="text" class="form-control" id="marriage_date" placeholder="e.g dd-mmm-yyyy">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Company Name -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_spouse_company" class="col-4 col-form-label">Company Name</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_spouse_company"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Passport/IC No -->
+                                        <div class="row">
+                                            <label for="txt_spouse_ic" class="col-4 col-form-label">Passport/IC No</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_spouse_ic"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Company Address -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_spouse_company_address" class="col-4 col-form-label">Company Address</label>
+                                            <div class="col-7 errorContainer">
+                                                <textarea class="form-control" id="txt_spouse_company_address" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- No Of Children -->
+                                        <div class="row">
+                                            <label for="txt_no_of_children" class="col-4 col-form-label">No Of Children</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="number" min="0" max="10" class="form-control" id="txt_no_of_children" onkeyup="$.fn.add_child_input(this.value)" onmouseup="$.fn.add_child_input(this.value)" data-parsley-type="digits" placeholder="" value="0"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- FAQ Category -->
+                                        <!-- <div class="row justify-content-end">
+                                            <label for="dd_faq" class="col-4 col-form-label">FAQ Category</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate-multiple" id="dd_faq" data-toggle="select2" data-width="100%" multiple>
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+
+                                
+                                <div id="child_info" class="mt-3" style="display:none;">
+                                    <table id="tbl_child" class="table w-100">
+                                    <thead>
+                                        <tr>
+                                            <th width="4%">No</th>
+                                            <th width="30%">Child Name</th>
+                                            <th width="22%">Passport/My Kid No</th>
+                                            <th width="22%">Sex</th>
+                                            <th width="22%">Date of Birth</th>
+                                        </tr>
+                                    </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <hr>
+
+                                <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Bank Details</h5>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Name(For Bank Acc.) -->
+                                        <div class="row">
+                                            <label for="txt_bank_acc_name" class="col-4 col-form-label">Name(For Bank Acc.)</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text" class="form-control" id="txt_bank_acc_name"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Passport/IC No(For Bank Acc.) -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_bank_acc_ic" class="col-4 col-form-label">Passport/IC No(For Bank Acc.)</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_bank_acc_ic"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Bank Name -->
+                                        <div class="row">
+                                            <label for="txt_bank_name" class="col-4 col-form-label">Bank Name</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text" class="form-control" id="txt_bank_name"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Account No -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_acc_no" class="col-4 col-form-label">Account No</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_acc_no"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Swift Code -->
+                                        <div class="row">
+                                            <label for="txt_swift_code" class="col-4 col-form-label">Swift Code</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_swift_code"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <hr>
+                                
+                                <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Emergency Contact</h5>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Emergency Contact Person -->
+                                        <div class="row">
+                                            <label for="txt_emergency_person" class="col-4 col-form-label">Emergency Contact Person</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text" class="form-control" id="txt_emergency_person"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Relationship -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_emergency_relation" class="col-4 col-form-label">Relationship</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="text"  class="form-control" id="txt_emergency_relation"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Bank Name -->
+                                        <div class="row">
+                                            <label for="txt_emergency_address" class="col-4 col-form-label">Emergency Contact Address</label>
+                                            <div class="col-7 errorContainer">
+                                                <textarea class="form-control" id="txt_emergency_address" rows="2"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Tel. No.(For Emergency) -->
+                                        <div class="row justify-content-end">
+                                            <label for="txt_emergency_phone" class="col-4 col-form-label">Tel. No.(For Emergency)</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="digit"  class="form-control" id="txt_emergency_phone" data-parsley-type="digits"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                                            
+                            </form>
+                        </div>
+                        <!--Additional Details-->
+
+                        <!--Permissions-->
+                        <div class="tab-pane" id="tab_p">
+                            <form class="form-horizontal" data-validate="parsley" id="permission_form">
+                                <div class="row mt-2">
+                                    <!-- Username -->
+                                    <label for="txt_username" class="col-3 col-form-label">Username</label>
+                                    
+                                    <div class="col-6 errorContainer">
+                                        <input type="text" name="email_id" class="form-control" id="txt_username" readonly required  />
+                                    </div>  
+                                </div>
+
+                                <div class="row mt-2">
+                                    <!-- Password -->
+                                    <label for="txt_password" class="col-3 col-form-label">Password</label>
+                                    <div class="col-6 errorContainer">
+                                        <div class="input-group">
+                                            <input type="password" class="form-control" id="txt_password" required="required" readonly="readonly">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-info waves-effect waves-light" id="btn_random_pass"><i class="fa fa-cogs"></i> Generate Password & Email</button>
+                                                <!-- <button type="button" class="btn btn-blue waves-effect waves-light" id="btn_send_email"><i class="fa fa-envelope"></i> </button> -->
+                                                <!-- <a href="#" class="btn btn-primary ladda-button" data-style="expand-left" data-spinner-color="#000000" id="btn_send_email"><i class="fa fa-envelope"></i> </a> -->
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+
+                                <div class="row my-4">
+                                    <div class="col-lg-4" id="admin_right_is_admin">
+                                        <!-- Admin right -->
+                                        <div class="row">
+                                            <label for="chk_is_admin" class="col-9 col-form-label">Admin right</label>
+                                            <div class="col-3 errorContainer pt-1">
+                                                <input type="checkbox" id="chk_is_admin" name="chk_is_admin" class="js-switch form-control" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <!-- Change initial password -->
+                                        <div class="row">
+                                            <label for="chk_initial_pwd" class="col-9 col-form-label">Change initial password</label>
+                                            <div class="col-3 errorContainer pt-1">
+                                                <input type="checkbox" id="chk_initial_pwd" name="chk_initial_pwd" class="js-switch form-control" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <!-- Enable Portal -->
+                                        <div class="row">
+                                            <label for="chk_enable_portal" class="col-9 col-form-label">Enable Portal</label>
+                                            <div class="col-3 errorContainer pt-1">
+                                                <input type="checkbox" id="chk_enable_portal" name="chk_enable_portal" class="js-switch form-control" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-lg-4">
+                                       
+                                        <div class="row">
+                                            <label for="chk_enable_chat" class="col-9 col-form-label">Enable Chat</label>
+                                            <div class="col-3 errorContainer pt-1">
+                                                <input type="checkbox" id="chk_enable_chat" name="chk_enable_chat" class="js-switch form-control" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-lg-4">
+                                        <!-- Enable Email -->
+                                        <div class="row">
+                                            <label for="chk_enable_email" class="col-9 col-form-label">Enable Email</label>
+                                            <div class="col-3 errorContainer pt-1">
+                                                <input type="checkbox" id="chk_enable_email" name="chk_enable_email" class="js-switch form-control" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <!-- Super Admin -->
+                                        <div class="row">
+                                            <label for="chk_is_super_admin" class="col-9 col-form-label">Super Admin</label>
+                                            <div class="col-3 errorContainer pt-1">
+                                                <input type="checkbox" id="chk_is_super_admin" name="chk_is_super_admin" class="js-switch form-control" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-lg-4">
+                                       
+                                        <div class="row">
+                                            <label for="chk_enable_backup" class="col-9 col-form-label">Enable backup</label>
+                                            <div class="col-3 errorContainer pt-1">
+                                                <input type="checkbox" id="chk_enable_backup" name="chk_enable_backup" class="js-switch form-control" data-color="#64b0f2" data-size="small" checked/>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="col-lg-4" id="div_backup_download">
+                                        
+                                    </div> -->
+                                </div>
+                                
+                                
+                            </form>
+                            <p>
+
+                                <table class="table" id="tbl_access">
+                                    <thead>
+                                        <tr>
+                                            <th>Modules</th>
+                                            <th>View (Own)</th>
+                                            <th id="tbl_access_view_all">View All</th>
+                                            <th>Create</th>
+                                            <th>Edit</th>
+                                            <th>De-Activate</th>
+                                            <th>Verify</th>
+                                            <th>Approve</th>
+                                            <th>Print</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                        
+                                        
+                                        
+                                    </tbody>
+                                </table>
+
+                            </p>
+                        </div>
+                        <!--Permissions-->
+
+                        <!--Assets-->
+                        <div class="tab-pane" id="tab_a">
+                            <div class="table-responsive">
+                                <table class="table" id="tbl_asset">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Client</th>
+                                            <th>Owner</th>
+                                            <th>Brand</th>
+                                            <th>Expiry Date</th>
+                                            <th>Taken Date</th>
+                                            <th>Return Date</th>
+                                        </tr>
+                                    </thead> 
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--Assets-->
+
+                        <!--Leaves-->
+                        <div id="tab_l" class="tab-pane">
+                            <form class="form-horizontal" data-validate="parsley" id="leave_detail_form">
+
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Leave Type -->
+                                        <div class="row">
+                                            <label for="leave_type" class="col-4 col-form-label">Leave Type</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" data-toggle="select2" data-width="100%" id="leave_type" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- No of Days -->
+                                        <div class="row justify-content-end">
+                                            <label for="no_of_days" class="col-4 col-form-label">No of Days</label>
+                                            <div class="col-7 errorContainer">
+                                                
+                                                <input type="number" class="form-control" id="no_of_days" data-parsley-type="number" placeholder="Required Field" required="required">
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-2">
+                                    
+                                    <div class="col-lg-6">
+                                        <!-- Brought Forward -->
+                                        <div class="row">
+                                            <label for="brought_forward" class="col-4 col-form-label">Brought Forward</label>
+                                            <div class="col-7 errorContainer">
+                                                
+                                                <input type="number" class="form-control" id="brought_forward" data-parsley-type="number" placeholder="Required Field" required="required">
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Applicable Year -->
+                                        <div class="row justify-content-end">
+                                            <label for="applicable_year" class="col-4 col-form-label">Applicable Year</label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" id="applicable_year" data-toggle="select2" data-width="100%" required>
+                                                    <option value="">Please Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <!-- Brought Forward -->
+                                        <div class="row">
+                                            <!-- <label for="applicable_to_next_year" class="col-4 col-form-label"></label> -->
+                                            <div class="col-7 errorContainer px-3">
+                                                
+                                                <div class="form-group">
+                                                    <label class="checkbox-inline fw-normal">
+                                                       <input type="checkbox" id="applicable_to_next_year" name="applicable_to_next_year"> Please tick if the similar configuration is applicable for next year.
+                                                    </label>
+                                                </div>
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl-12 text-end">
+                                        <button type="button" class="btn btn-success waves-effect waves-light" id="btn_leave_save">
+                                            <i class="fa fa-save"></i> Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="tbl_leave">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Name</th>
+                                            <th>Leave Type</th>
+                                            <th>No of Days</th>
+                                            <th>Brought Forward</th>
+                                            <th>Year</th>
+                                            <th>Created By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--Leaves-->
+
+                        <!--Work History-->
+                        <div class="tab-pane" id="tab_w">
+                            <form class="form-horizontal" data-validate="parsley" id="rec_detail_form">
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Department -->
+                                        <div class="row">
+                                            <label for="his_dd_dept" class="col-4 col-form-label">Department <span class="mandatory">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" data-toggle="select2" data-width="100%" id="his_dd_dept" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Tied to Client -->
+                                        <div class="row justify-content-end">
+                                            <label for="his_dd_client" class="col-4 col-form-label">Tied to Client <span class="mandatory">*</span></label>
+                                            <div class="col-7 errorContainer">
+                                                <select class="form-control populate" data-toggle="select2" data-width="100%" id="his_dd_client" required>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Start Date -->
+                                        <div class="row">
+                                            <label for="his_start_date" class="col-4 col-form-label">Start Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control flatpickr-input" id="his_start_date" placeholder="Required" required="required">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- End Date -->
+                                        <div class="row justify-content-end">
+                                            <label for="his_end_date" class="col-4 col-form-label">End Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control flatpickr-input" id="his_end_date" placeholder="Required" required="required">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Join Date -->
+                                        <div class="row">
+                                            <label for="his_join_date" class="col-4 col-form-label">Join Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control flatpickr-input" id="his_join_date" placeholder="Required" required="required">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Salary -->
+                                        <div class="row justify-content-end">
+                                            <label for="his_txt_salary" class="col-4 col-form-label">Salary</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="number" id="his_txt_salary" placeholder="Required" class="form-control" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Increment Date -->
+                                        <div class="row">
+                                            <label for="his_increment_date" class="col-4 col-form-label">Increment Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control flatpickr-input" id="his_increment_date">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Increment Amount -->
+                                        <div class="row justify-content-end">
+                                            <label for="his_salary" class="col-4 col-form-label">Increment Amount</label>
+                                            <div class="col-7 errorContainer">
+                                                <input type="number" id="his_txt_increment_amount" class="form-control" max="99999" min="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Next Increment Date -->
+                                        <div class="row">
+                                            <label for="his_next_increment_date" class="col-4 col-form-label">Next Increment Date</label>
+                                            <div class="col-7 errorContainer">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control flatpickr-input" id="his_next_increment_date">
+                                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xl-12 text-end">
+                                        <button type="button" class="btn btn-success waves-effect waves-light" id="btn_rec_save">
+                                            <i class="fa fa-save"></i> Save
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <hr>
+                            <div class="col-sm-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="tbl_receive">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Client Name</th>
+                                                <th>Department</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Join Date</th>
+                                                <th>Salary</th>
+                                                <th>Created By</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Work History-->
+
+                        <!--Documents-->
+                        <div id="tab_att" class="tab-pane">
+                            <form class="form-horizontal" data-validate="parsley" id="attachment_form">
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Attachments -->
+                                        <div class="row">
+                                            <label for="doc_fileupload" class="col-4 col-form-label">Attachments</label>
+                                            <div class="col-7 errorContainer fileinput-button">
+                                                <button type="button" id="btn_doc_upload" class="btn btn-sm btn-success"><i class="mdi mdi-upload"></i>Browse File</button>
+                                                <input id="attach_fileupload" type="file" name="qqfile">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Visible to owner -->
+                                        <div class="row justify-content-end">
+                                            <label for="chk_file_visible" style="padding-left:0" class="col-4 col-form-label">Visible to owner</label>
+                                            <div class="col-7 errorContainer mt-1" style="padding-left:0">
+                                                <input type="checkbox" id="chk_file_visible" name="chk_file_visible" class="js-switch" data-color="#64b0f2" data-size="small">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-lg-2">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-lg-10" id="attach_files">
+                                    </div> -->
+                                    <div class="files_div">
+                                        <div class="row mt-2">
+                                            <div id="attach_files" class="col-lg-10 offset-lg-2"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6">
+                                            <!-- Remarks -->
+                                            <div class="row">
+                                                <label for="txt_attach_remarks" class="col-4 col-form-label">Remarks</label>
+                                                <div class="col-7 errorContainer">
+                                                    <input type="text" class="form-control" id="txt_attach_remarks">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <!-- Category -->
+                                            <div class="row justify-content-end">
+                                                <label for="dd_attach_category" class="col-4 col-form-label">Category</label>
+                                                <div class="col-7 errorContainer">
+                                                    <select id="dd_attach_category" style="width:100%" class="populate">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="form-group align-right me-4 pe-1">
+                                            <button type="button" class="btn btn-success waves-effect waves-light" id="btn_attach_save">
+                                                <i class="fa fa-save"></i> Upload & Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <hr>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Visible to Owner</th>
+                                        <th>Checklist</th>
+                                        <th>Filename</th>
+                                        <th>Remarks</th>
+                                        <th>Created By</th>
+                                        <th>Created Date</th>
+                                        <th>Active Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_attachment">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--Documents-->
+
+                        <!--Exit Checklist-->
+                        <div id="tab_e" class="tab-pane">
+                            <form class="form-horizontal" data-validate="parsley" id="exit_form">
+                                <div class="row mt-2">
+                                    <div class="col-lg-6">
+                                        <!-- Attachments -->
+                                        <div class="row">
+                                            <label for="doc_fileupload" class="col-4 col-form-label">Attachments</label>
+                                            <div class="col-7 errorContainer fileinput-button">
+                                                <button type="button" id="btn_doc_upload1" class="btn btn-sm btn-success"><i class="mdi mdi-upload"></i>Browse File</button>
+                                                <input id="exit_attach_fileupload" type="file" name="qqfile">
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Visible to owner -->
+                                        <div class="row justify-content-end">
+                                            <label for="chk_file_visible" style="padding-left:0" class="col-4 col-form-label">Visible to owner</label>
+                                            <div class="col-7 errorContainer mt-1" style="padding-left:0">
+                                                <input type="checkbox" id="chk_exit_file_visible" name="chk_exit_file_visible" class="js-switch" data-color="#64b0f2" data-size="small">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-lg-2">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-lg-10" id="attach_files">
+                                    </div> -->
+                                    <div class="files_div">
+                                        <div class="row mt-2">
+                                            <div id="exit_attach_files" class="col-lg-10 offset-lg-2"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-lg-6">
+                                            <!-- Remarks -->
+                                            <div class="row">
+                                                <label for="txt_exit_attach_remarks" class="col-4 col-form-label">Remarks</label>
+                                                <div class="col-7 errorContainer">
+                                                    <input type="text" class="form-control" id="txt_exit_attach_remarks">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <!-- Checklist -->
+                                            <div class="row justify-content-end">
+                                                <label for="dd_exit_category" class="col-4 col-form-label">Checklist</label>
+                                                <div class="col-7 errorContainer">
+                                                    <select id="dd_exit_category" style="width:100%" class="populate">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="form-group align-right me-4 pe-1">
+                                            <button type="button" class="btn btn-success waves-effect waves-light" id="btn_exit_attach_save">
+                                                <i class="fa fa-save"></i> Upload & Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <hr>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Visible to Owner</th>
+                                        <th>Checklist</th>
+                                        <th>Filename</th>
+                                        <th>Remarks</th>
+                                        <th>Created By</th>
+                                        <th>Created Date</th>
+                                        <th>Active Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbl_exit">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--Exit Checklist-->
+
+                    </div>
+                    <div class="form-group align-right" id="actions_div">
+                        <button id="btn_save" type="button" class="btn btn-success waves-effect waves-light mt-1 mb-1 ladda-button" data-color="green" data-style="expand-left"><i class="fa fa-check me-1"></i> Save</button>
+                    </div>
+                </div>
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+        
+    </div>
+    <!-- end row -->
+</div>
+
+
+
+
+                
+
+
+        

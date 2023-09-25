@@ -1,0 +1,475 @@
+<link href="./assets/libs/fullcalendar/main.min.css" rel="stylesheet" type="text/css" />
+<style>
+  .fc-h-event {border:none !important;}
+  .fc-event-title{white-space: normal;text-align: left;}
+</style>
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">&nbsp;Admin Dashboard</h4>
+        </div>
+    </div>
+</div>     
+<!-- end page title --> 
+
+<div class="row">
+  <div class="col-md-6 col-xl-4">
+      <div class="widget-rounded-circle card">
+        <a class="info-tiles tiles-toyo" href="./meetings">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
+                          <i class="fe-calendar font-22 avatar-title text-white"></i>
+                      </div>
+                  </div>
+                  <div class="col-9">
+                      <div class="text-end">
+                          <h3 class="text-dark"><span data-plugin="counterup" id="total_open_app_count_id">0</span></h3>
+                          <p class="text-muted mb-1">Total Open Appointments</p><i class="fas fa-info-circle font-18 text-muted" title="More Info" id="btn_appointment_more"></i>
+                      </div>
+                  </div>
+              </div> <!-- end row-->
+          </div>
+        </a>
+      </div> <!-- end widget-rounded-circle-->
+  </div> <!-- end col-->
+
+  <div class="col-md-6 col-xl-4">
+      <div class="widget-rounded-circle card">
+        <a class="info-tiles tiles-toyo" href="./claims/documents-approval">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="avatar-lg rounded-circle bg-success border-success border shadow">
+                          <i class="fe-cloud font-22 avatar-title text-white"></i>
+                      </div>
+                  </div>
+                  <div class="col-9">
+                      <div class="text-end">
+                          <h3 class="text-dark"><span data-plugin="counterup" id="pending_claim_count_id">0</span></h3>
+                          <p class="text-muted mb-1 ">Pending Claims</p><i class="fas fa-info-circle text-white font-18"></i>
+                      </div>
+                  </div>
+              </div> <!-- end row-->
+          </div>
+          </a>
+      </div> <!-- end widget-rounded-circle-->
+  </div> <!-- end col-->
+
+  <div class="col-md-6 col-xl-4">
+      <div class="widget-rounded-circle card">
+        <a class="info-tiles tiles-toyo" href="./assets/asset">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="avatar-lg rounded-circle bg-info border-info border shadow">
+                          <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                      </div>
+                  </div>
+                  <div class="col-9">
+                      <div class="text-end">
+                          <h3 class="text-dark"><span data-plugin="counterup"  id="total_assests_count_id">0</span></h3>
+                          <p class="text-muted mb-1 ">Total Assets</p><i class="fas fa-info-circle font-18 text-muted" title="More Info" id="btn_asset_more"></i>
+                      </div>
+                  </div>
+              </div> <!-- end row-->
+          </div>
+        </a>
+      </div> <!-- end widget-rounded-circle-->
+  </div> <!-- end col-->
+
+
+  <div class="col-md-12" id="div_appointment_details" style="display: none">
+    <div class="card card-body">
+      <div class="table-responsive">
+        <span class="close"><b>Employees</b><button type="button" id="btn_close_app_details" class="btn-close float-end" aria-label="Close"></button></span>
+        <table class="table table-centered table-striped w-100 dataTable no-footer" id="tbl_appt_dashboard">
+          <thead>
+            <tr>
+              <th class="" colspan="7"></th>
+            </tr>
+            <tr>
+              <th class="col-xs-9 col-sm-3">User</th>
+              <th class="col-xs-2 col-sm-2">Total</th>
+              <th class="col-xs-2 col-sm-2">Open</th>
+              <th class="col-xs-2 col-sm-2">Follow Up</th>
+              <th class="col-xs-2 col-sm-2">Took Place</th>
+              <th class="col-xs-2 col-sm-2">Postponed</th>
+              <th class="col-xs-2 col-sm-2">Cancelled</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          <tfoot>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12" id="div_asset_details" style="display: none">
+    <div class="card card-body">
+      <div class="table-responsive">
+        <span class="close"><b>Assets Summary</b><button type="button" id="btn_close_asset_detail" class="btn-close float-end" aria-label="Close"></button></span>
+        <table class="table table-centered table-striped w-100 dataTable no-footer" id="tbl_asset_dashboard">
+          <thead>
+            <tr>
+              <th class="" colspan="3"></th>
+            </tr>
+            <tr>
+              <th class="col-xs-2 col-sm-3">Type</th>
+              <th class="col-xs-2 col-sm-2">Count</th>
+              <th class="col-xs-2 col-sm-2">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          <tfoot>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12" id="div_asset_details_expiry" style="display: none">
+    <div class="card card-body">
+      <div class="table-responsive">
+        <span class="close"><b>Assets Details</b><button type="button" id="btn_close_asset_exp_detail" class="btn-close float-end" aria-label="Close"></button></span>
+        <table class="table table-centered table-striped w-100 dataTable no-footer" id="tbl_asset_dashboard_detail">
+          <thead>
+            <tr>
+              <th class="textcenterhead text-center" colspan="5"></th>
+            </tr>
+            <tr>
+              <th class="col-xs-2 col-sm-3">Assigned To</th>
+              <th class="col-xs-2 col-sm-3">Type</th>
+              <th class="col-xs-2 col-sm-2">Brand Name</th>
+              <th class="col-xs-2 col-sm-2">Client</th>
+              <th class="col-xs-2 col-sm-2">Expiry Date</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          <tfoot>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+      <div class="widget-rounded-circle card">
+        <a class="info-tiles tiles-toyo" href="./leaves/approval">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="avatar-lg rounded-circle bg-warning border-warning border shadow">
+                          <i class="fe-eye font-22 avatar-title text-white"></i>
+                      </div>
+                  </div>
+                  <div class="col-9">
+                      <div class="text-end">
+                          <h3 class="text-dark"><span data-plugin="counterup" id="leave_pending_app_count_id">0</span></h3>
+                          <p class="text-muted mb-1">Leave Pending Approvals</p><i class="fas fa-info-circle font-18 text-muted" title="More Info" id="btn_leave_more"></i>
+                      </div>
+                  </div>
+              </div> <!-- end row-->
+          </div>
+        </a>
+      </div> <!-- end widget-rounded-circle-->
+  </div> <!-- end col-->
+  <div class="col-md-6 col-xl-8">
+      <div class="widget-rounded-circle card">
+          <div class="card-body" id="top_user_data_check">
+              <div class="row">
+                  <div class="col-3">
+                      <div class="avatar-lg rounded-circle bg-pink border-pink border shadow">
+                          <i class="fe-user font-22 avatar-title text-white"></i>
+                      </div>
+                  </div>
+                  <div class="col-9">
+                      <div class="text-end">
+                          <h3 class="text-dark mt-1"><span data-plugin="counterup" id="topusers_id">0</span></h3>
+                          <span class="text-muted">Top Users</span>
+                          <span class="text-top text-muted" style="border-left: 1px solid #98a6ad;margin-left: 3%;"></span>
+                        <span class="text-top text-muted" style="margin-left: 3%;" id="mosttopusers_id"></span>
+                        <br><i class="fas fa-info-circle font-2  mt-2 text-white"></i>
+                      </div>
+                  </div>
+              </div> <!-- end row-->
+          </div>
+      </div> <!-- end widget-rounded-circle-->
+  </div> <!-- end col-->
+
+  <div class="col-md-12" id="div_leave_details" style="display: none">
+    <div class="card card-body">
+      <div class="table-responsive">
+        <span class="close"><b>Leave Details</b><button type="button" id="btn_close_leave_details" class="btn-close float-end" aria-label="Close"></button></span>
+        <table class="table table-centered table-striped w-100 dataTable no-footer" id="tbl_leave_dashboard">
+          <thead>
+            <tr>
+              <th class="" colspan="7"></th>
+            </tr>
+            <tr>
+              <th class="">User</th>
+              <th class="">Annual Leave / Taken</th>
+              <th class="">Medical Leave / Taken</th>
+              <th class="">Emergency Leave</th>
+              <th class="">Total Leave Taken</th>
+              <th class="">Balance</th>
+              <th class="">UnPaid Leave</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+          <tfoot>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-12" id="demo" style="display: none">
+      <div class="card card-body">
+        <div class="table-responsive">
+          <span class="close"><button type="button" id="btn_close_details" class="btn-close float-end"  aria-label="Close"></button></span>
+          <table class="table table-centered table-striped w-100 dataTable no-footer" id="tbl_list_demo">
+            <thead>
+              <tr>
+                <th class="textcenterhead text-center" colspan="2">Period | Last 90 days</th>
+              </tr>
+              <tr>
+                <th class="textcenterhead ">Name</th>
+                <th class="textcenterhead text-center">Time Spend</th>
+              </tr>
+            </thead>
+            <tbody id="">
+            </tbody>
+            <tfoot>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-12" id="userdata" style="display: none">
+      <div class="card card-body">
+        <div class="table-responsive">
+          <span class="close"><button type="button" id="btn_close" class="btn-close float-end"  aria-label="Close"></button></span>
+          <table class="table table-centered table-striped w-100 dataTable no-footer" id="tbl_list">
+            <thead>
+              <tr>
+                <th class="textcenterhead text-center" colspan="2">Period | Last 90 days</th>
+              </tr>
+              <tr>
+                <th class="textcenterhead ">Module Name</th>
+                <th class="textcenterhead text-center">Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- //////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<!-- end row-->
+<div class="row">
+  <div class="col-12">
+
+      <div class="card">
+          <div class="card-body">
+              <div class="row">
+                  
+                  <div id="external-events"> </div>
+                 
+                  <div class="col-lg-12">
+                      <div id="calendar"></div>
+                  </div> <!-- end col -->
+
+              </div>  <!-- end row -->
+          </div> <!-- end card body-->
+      </div> <!-- end card -->
+
+      <!-- Add New Event MODAL -->
+      <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="float:left" id="myModalLabel">Event</h4>
+                <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+                 </div>
+                  <div class="modal-body px-4 pb-4 pt-0">
+                      <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                          <div class="row">
+                              <div class="col-12">
+                                  <div class="mb-3">
+                                      <label class="form-label">Event Name</label>
+                                      <input class="form-control" placeholder="Insert Event Name"
+                                          type="text" name="title" id="event-title" required />
+                                      <div class="invalid-feedback">Please provide a valid event name</div>
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="mb-3">
+                                      <label class="form-label">Category</label>
+                                      <select class="form-select" name="category" id="event-category" required>
+                                          <option value="bg-danger" selected>Danger</option>
+                                          <option value="bg-success">Success</option>
+                                          <option value="bg-primary">Primary</option>
+                                          <option value="bg-info">Info</option>
+                                          <option value="bg-dark">Dark</option>
+                                          <option value="bg-warning">Warning</option>
+                                      </select>
+                                      <div class="invalid-feedback">Please select a valid event category</div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row mt-2">
+                              <div class="col-md-12 col-8 text-end">
+                                  <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal">Close</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div> <!-- end modal-content-->
+          </div> <!-- end modal dialog-->
+      </div>
+      <!-- end modal-->
+  </div>
+  <!-- end col-12 -->
+</div> <!-- end row -->
+
+<!--- Page End -->
+
+<div class="modal fade" id="display_appointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="float:left" id="myModalLabel">Appointment Details</h4>
+        <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-condensed">
+          <tbody>
+            <tr>
+              <td>Subject</td>
+              <td id="display-subject">Subject</td>
+            </tr>
+            <tr>
+              <td>Client</td>
+              <td id="display-client_name">Client</td>
+            </tr>
+            <tr>
+              <td>Employees</td>
+              <td id="display-people_name" style="white-space:pre">Employees</td>
+            </tr>
+            <tr>
+              <td>Created By</td>
+              <td id="display-created_by_name">Created By</td>
+            </tr>
+            <tr>
+              <td>Appointment From</td>
+              <td id="display-date_time">Appointment From</td>
+            </tr>
+            <tr>
+              <td>Appointment To</td>
+              <td id="display-date_time_to">Appointment To</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="display_leave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="float:left" id="myModalLabel">Leave Details</h4>
+        <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-condensed">
+          <tbody>
+            <tr>
+              <td>Start Date</td>
+              <td id="display-start_date">Start Date</td>
+            </tr>
+            <tr>
+              <td>End Date</td>
+              <td id="display-end_date">End Date</td>
+            </tr>
+            <tr>
+              <td>Leave Type</td>
+              <td id="display-leave_type">Leave Type</td>
+            </tr>
+            <tr>
+              <td>Number of Days</td>
+              <td id="display-no_of_days">Number of Days</td>
+            </tr>
+            <tr>
+              <td>Applied Date</td>
+              <td id="display-applied_date">Applied Date</td>
+            </tr>
+            <tr>
+              <td>Employee Name</td>
+              <td id="display-employee_name">Employee Name</td>
+            </tr>
+            <tr>
+              <td>Reason</td>
+              <td id="display-reason">Reason</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="display_tasks" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title" style="float:left" id="myModalLabel">Task List</h4>
+          <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+                <th>Task No</th>
+                <th>Task Title</th>
+                <th>Task Type</th>
+                <th>Priority</th>
+                <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ <!-- Vendor js -->
+
+ <script src="./assets/libs/fullcalendar/main.min.js"></script>

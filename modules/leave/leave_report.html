@@ -1,0 +1,119 @@
+<style>
+th{
+    font-weight: 600;
+}
+</style>
+<div class="row" id="list_div">
+    <div class="row mt-3 mb-1">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right" style="margin-right:11px ;display: none;">
+                    <a href="javascript:void(0);" id="btn_search" class="btn btn-success mb-2 panel-collapse"><i class="fe-search me-1"></i>Search</a>
+                   
+              </div>  
+                <h4 class="page-title">
+                    &nbsp; &nbsp;Leave  Report
+                </h4>
+            </div>
+        </div>
+    </div>     
+ 
+    <div class="col-xl-12 mb-4" id="searchPanel"  style="display: block;">
+        <div class="col-12">
+            <div class="card mb-0">
+               
+                <div class="card-body">
+                    <div class="float-end">
+                       
+                    </div>
+                    <div class="clearfix"></div>
+                    <form class="form-horizontal">
+                        <div class="row mt-2">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <label for="employee" class="col-4 col-form-label">Employee</label>
+                                    <div class="col-7 errorContainer">
+                                            <select class="form-control populate" data-toggle="select2" data-width="100%" id="dd_employee" required>
+                                                <!-- <option value="ALL">Please Select</option> -->
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <label for="dd_leave_type" class="col-4 col-form-label">Leave Year</label>
+                                    <div class="col-7 errorContainer">
+                                        <select class="form-control populate" data-toggle="select2" data-width="100%" id="dd_leave_year" required>
+                                            <option value="2023">2023</option>
+                                            <option value="2022">2022</option>
+                                        </select>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <!-- <div class="row mt-2">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <label for="doc_date" class="col-4 col-form-label">Date</label>
+                                    <div class="col-7 errorContainer">
+                                        <input type="text" id="doc_date" class="form-control flatpickr-input" placeholder="01-01-2021 to 31-12-2022" readonly="readonly">
+                                        <input type="hidden" id="from_date">
+                                        <input type="hidden" id="to_date">
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-lg-6" style="margin-top: 10px;">
+                                <div class="row">
+                                    <label for="chk_weekend" class="col-4 col-form-label">&nbsp;&nbsp;</label>
+                                    <div class="col-8 errorContainer">
+                                        <div class="col-sm-12">
+                                            <input type="checkbox" class="form-check-input"  id="chk_is_paid" name="chk_is_paid" checked="checked">
+                                            Paid&nbsp;&nbsp;
+                                            <input type="checkbox" class="form-check-input"  id="chk_is_unpaid" name="chk_is_unpaid" checked="checked">
+                                            Unpaid
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+ 
+                        <div><br></div>
+                        <div class="form-group align-right" style="margin-right: 38px; float: right;">
+                            <button id="btn_reset" type="button" class="btn btn-light waves-effect waves-light m-1"><i class="fe-refresh-cw me-1"></i> Reset</button>
+                            <button id="btn_search_action" type="button" class="btn btn-success waves-effect waves-light mt-1 mb-1"><i class="fe-search me-1"></i> Search</button>    
+                        </div>
+                    </form>                 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="div_report_view" class="col-sm-12" style="display:none;">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title mb-3">Name : <span id="candidate_name">Mohamed Yahya</span></h4>
+                    <div class="table-responsive">
+                        <table id="tbl_list" class="table table-bordered mb-0">
+                            <thead>
+                                <tr>
+                                    <th>LEAVE TYPE</th>
+                                    <th>LEAVE ENTITLED</th>
+                                    <th>LEAVE TAKEN</th>
+                                    <th>LEAVE BALANCE</th>
+                                    <th>LEAVE DAYS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+          </div>
+        </div>
+    </div>
+</div>

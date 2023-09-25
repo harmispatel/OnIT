@@ -1,0 +1,344 @@
+ <link href="./assets/libs/fullcalendar/main.min.css" rel="stylesheet" type="text/css" />
+ <style>
+  .fc-h-event {border:none !important;}
+  .fc-event-title{white-space: normal;text-align: left;}
+</style>
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">&nbsp;User Dashboard</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-6 col-xl-4">
+        <div class="widget-rounded-circle card">
+          <a class="info-tiles tiles-toyo" href="./meetings">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
+                            <i class="fe-calendar font-22 avatar-title text-white"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="text-end">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup" id="app_count_id">20</span></h3>
+                            <p class="text-muted mb-1">Pending Leave Approval</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+        <div class="widget-rounded-circle card">
+          <a class="info-tiles tiles-toyo" href="./task/my-task">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="avatar-lg rounded-circle bg-success border-success border shadow">
+                            <i class="fe-cloud font-22 avatar-title text-white"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="text-end">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup" id="tasks_count_id">15</span></h3>
+                            <p class="text-muted mb-1 ">Pending Attendance Approval</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div>
+    </div> 
+
+    <div class="col-md-6 col-xl-4">
+        <div class="widget-rounded-circle card">
+          <a class="info-tiles tiles-toyo" href="./contract">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="avatar-lg rounded-circle bg-info border-info border shadow">
+                            <i class="fe-bar-chart-line- font-22 avatar-title text-white"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="text-end">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup"  id="contracts_count_id">10</span></h3>
+                            <p class="text-muted mb-1 ">Open Complaint</p>
+                        </div>
+                    </div>
+                </div> <!-- end row-->
+            </div>
+          </a>
+        </div> <!-- end widget-rounded-circle-->
+    </div>
+
+    <div class="col-md-6 col-xl-4">
+        <div class="widget-rounded-circle card">
+          <a class="info-tiles tiles-toyo" href="./comm/my-communications">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="avatar-lg rounded-circle bg-warning border-warning border shadow">
+                            <i class="fe-eye font-22 avatar-title text-white"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="text-end">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup" id="communications_count_id">7</span></h3>
+                            <p class="text-muted mb-1">Open Communications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xl-8">
+        <div class="widget-rounded-circle card">
+            <div class="card-body" id="top_user_data_check">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="avatar-lg rounded-circle bg-pink border-pink border shadow">
+                            <i class="fe-user font-22 avatar-title text-white"></i>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="text-end">
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup" id="topusers_id"></span></h3>
+                            <span class="text-muted">Top Users</span>
+                            <span class="text-top text-muted" style="border-left: 1px solid #98a6ad;margin-left: 3%;"></span>
+                          <span class="text-top text-muted" style="margin-left: 3%;" id="mosttopusers_id"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-12">
+        <div class="col-md-12 card" id="userdata" style="display: none">
+          <div class="card-body">
+            <div class="table-responsive">
+              <span class="close"><button type="button" id="btn_close" class="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button></span>
+              <table class="table table-centered table-striped w-100 dataTable no-footer" id="tbl_list">
+                <thead>
+                  <tr>
+                    <th class="textcenterhead text-center" colspan="2">Period | Last 90 days</th>
+                  </tr>
+                  <tr>
+                    <th class="textcenterhead ">Module Name</th>
+                    <th class="textcenterhead text-center">Duration</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col-12">
+
+      <div class="card">
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div id="external-events">  
+                      </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                      <div id="calendar" ></div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header bg-light">
+            <h4 class="modal-title" style="float:left" id="myModalLabel">Event</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>            
+          </div>
+          <div class="modal-body px-4 pb-4 pt-0">
+            <form class="needs-validation" name="event-form" id="form-event" novalidate>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label class="form-label">Event Name</label>
+                            <input class="form-control" placeholder="Insert Event Name"
+                                type="text" name="title" id="event-title" required />
+                            <div class="invalid-feedback">Please provide a valid event name</div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" name="category" id="event-category" required>
+                                <option value="bg-danger" selected>Danger</option>
+                                <option value="bg-success">Success</option>
+                                <option value="bg-primary">Primary</option>
+                                <option value="bg-info">Info</option>
+                                <option value="bg-dark">Dark</option>
+                                <option value="bg-warning">Warning</option>
+                            </select>
+                            <div class="invalid-feedback">Please select a valid event category</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-effect waves-light" data-bs-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="display_leave" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header bg-light">
+              <h4 class="modal-title" id="standard-modalLabel">Leave Details</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>                        
+          <div class="modal-body">
+              <div class="row">
+                <table class="table table-condensed">
+                  <tbody>
+                    <tr>
+                      <td>Start Date</td>
+                      <td id="display-start_date">Start Date</td>
+                    </tr>
+                    <tr>
+                      <td>End Date</td>
+                      <td id="display-end_date">End Date</td>
+                    </tr>
+                    <tr>
+                      <td>Leave Type</td>
+                      <td id="display-leave_type">Leave Type</td>
+                    </tr>
+                    <tr>
+                      <td>Number of Days</td>
+                      <td id="display-no_of_days">Number of Days</td>
+                    </tr>
+                    <tr>
+                      <td>Applied Date</td>
+                      <td id="display-applied_date">Applied Date</td>
+                    </tr>
+                    <tr>
+                      <td>Employee Name</td>
+                      <td id="display-employee_name">Employee Name</td>
+                    </tr>
+                    <tr>
+                      <td>Reason</td>
+                      <td id="display-reason">Reason</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-effect waves-light" data-bs-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- <div class="modal fade" id="display_appointment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="float:left" id="myModalLabel">Appointment Details</h4>
+        <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-condensed">
+          <tbody>
+            <tr>
+              <td>Subject</td>
+              <td id="display-subject">Subject</td>
+            </tr>
+            <tr>
+              <td>Client</td>
+              <td id="display-client_name">Client</td>
+            </tr>
+            <tr>
+              <td>Employees</td>
+              <td id="display-people_name" style="white-space:pre">Employees</td>
+            </tr>
+            <tr>
+              <td>Created By</td>
+              <td id="display-created_by_name">Created By</td>
+            </tr>
+            <tr>
+              <td>Appointment From</td>
+              <td id="display-date_time">Appointment From</td>
+            </tr>
+            <tr>
+              <td>Appointment To</td>
+              <td id="display-date_time_to">Appointment To</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="modal fade" id="display_tasks" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title" style="float:left" id="myModalLabel">Task List</h4>
+          <button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+                <th>Task No</th>
+                <th>Task Title</th>
+                <th>Task Type</th>
+                <th>Priority</th>
+                <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light waves-effect waves-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<script src="./assets/libs/fullcalendar/main.min.js"></script>

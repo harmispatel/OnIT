@@ -1,0 +1,495 @@
+<link href="./assets/libs/form-croppie/croppie.css" rel="stylesheet" type="text/css" />
+<!-- start page title -->
+<div class="row mt-3 mb-1">
+    <div class="col-12">
+        <div class="page-title-box">
+           
+            <h4 class="page-title">Configuration</h4>
+        </div>
+    </div>
+</div>     
+<!-- end page title --> 
+
+
+
+<div id="searchPanel" class="row" style="display: none;">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="float-end">
+                    <a id="btn_close_search" href="javascript:void(0)">
+                        <i class="mdi mdi-close-box m-0 text-muted h3"></i>
+                    </a>
+                </div>
+                <form class="form-horizontal">
+                    <div class="form-group">					
+                        <label class="col-sm-2 control-label">Cutter No</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="txt_cutter_no_search" placeholder="Cutter No">
+                        </div>
+                        <label class="col-sm-2 control-label">Cutter Size</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="txt_cutter_desc_search" placeholder="Cutter Size">
+                        </div>
+                    </div>
+
+                    <div class="form-group">					
+                        <label class="col-sm-2 control-label">Remarks</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="txt_remarks_search" placeholder="Remarks">
+                        </div>
+                        <label class="col-sm-2 control-label">Category</label>
+                        <div class="col-sm-4">
+                            <select id="dd_cutter_category_search" class="form-control populate" data-width="100%">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">					
+                        <label class="col-sm-2 control-label">Ups</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="txt_ups_search" placeholder="Ups">
+                        </div>
+                        <label class="col-sm-2 control-label">Cutter Image (Available)</label>
+                        <div class="col-sm-4">
+                            <select id="dd_is_image" class="form-control populate" data-width="100%">
+                                <option value="">Please Select</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group align-right">
+                        <button id="btn_reset" type="button" class="btn btn-light waves-effect waves-light m-1"><i class="fe-refresh-cw me-1"></i> Reset</button>
+                        <button id="btn_search_action" type="button" class="btn btn-success waves-effect waves-light mt-1 mb-1"><i class="fe-search me-1"></i> Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tblList" class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+               
+                <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                       
+                                        <ul class="nav nav-tabs nav-bordered nav-justified">
+                                            <li class="nav-item">
+                                                <a href="#home-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                                                    Dropdown
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#profile-b2" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                                    Public Holidays
+                                                </a>
+                                            </li>
+                                            <!-- <li class="nav-item">
+                                                <a href="#messages-b2" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                                    Company Details
+                                                </a>
+                                            </li> -->
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="home-b2">
+												<form class="form-horizontal" data-validate="parsley" id="detail_form">
+                                               <div class="row">
+												<div class="col-md-6">
+                                                        <label for="simpleinput" class="form-label">Description <span class="mandatory">*</span></label>
+                                                        <input type="text" id="txt_desc" placeholder="Required" required="required" class="form-control">
+                                                    </div>
+                                            <div class="col-md-5">
+                                               <label for="simpleinput" class="form-label">Category</label>
+                                                <select class="form-control country" id="dd_category" onchange="$.fn.show_div(this)" data-toggle="select2" data-width="100%">
+                                                    <option>Select</option>
+                                                </select>
+												<input type="hidden" id="hidden_dd_category">
+												
+                                            </div> <!-- end col -->
+											<div class="col-md-1">
+												<label for="simpleinput"  style="width:100%;text-align:center">Active</label>
+												<div style="text-align:center;">
+													<input class="form-check-input midsize-checkbox" style="margin-top:15px;" type="checkbox" value="" id="chk_is_active" checked>
+												</div>
+												</div>
+											
+                                           
+                                        </div>
+										<div class="row mt-3" id="div_tasks">
+											<div class="col-md-12">
+												<div class="col-md-6" style="float:left">
+													<div style="float:left;">
+														<input class="form-check-input midsize-checkbox" type="checkbox" id="chk_is_chargeable" name="chk_is_chargeable" checked="checked">
+													</div>
+													<div style="float:left;margin-left:10px;margin-top:5px;" >Is Chargeable?</div>
+												</div>
+											</div>
+										</div>
+										  <div class="form-group" id="div_noOfDays" style="display:none">
+	            							<label for="dd_dept_search" class="col-sm-2 control-label">No. of Days</label>
+	            							<div class="col-sm-4">
+	            								<input type="text" class="form-control" id="txt_no_of_days">
+	            							</div>
+	                                    </div>
+                                    
+	                                    <div class="row mt-3" id="div_roles" style="display:none">
+	            							<label for="simpleinput" class="form-label">Route To </label>
+	            							<div class="col-sm-4">
+	            								<select id="dd_roles" style="width:100%" class="populate" multiple> 
+	            								</select>	
+	            							</div>
+	            							
+	            							<div id="div_sla">
+		            							<label for="dd_dept_search"  class="form-label">SLA</label>
+		            							<div class="col-sm-1">
+		            								<input type="number" class="form-control" id="txt_sla" placeholder="In Hours" data-parsley-type="number" max="999999" min="1" oninput="checkNumberMinMax(this)">
+		            							</div>
+		            							<label for="dd_dept_search"  class="form-label">KPI</label>
+		            							<div class="col-sm-1">
+		            								<input type="number" class="form-control" id="txt_kpi" placeholder="In Hours" data-parsley-type="number" max="999999" min="1" oninput="checkNumberMinMax(this)">
+		            							</div>
+	            							</div>
+	            							
+	                                    </div>
+                                    
+	                                    <div class="row mt-3" id="div_dependent" style="display:none">            							
+	            							<label for="dd_dept_search"  class="form-label">6 Month and Less</label>
+	            							<div class="col-sm-4">
+	            								<input type="number" class="form-control" id="txt_6_months" placeholder="Amount" data-parsley-type="number" max="999999" min="1" oninput="checkNumberMinMax(this)">
+	            							</div>
+	            							<label for="dd_dept_search" class="form-label">More than 6 Months</label>
+	            							<div class="col-sm-4">
+	            								<input type="number" class="form-control" id="txt_7_months" placeholder="Amount" data-parsley-type="number" max="999999" min="1" oninput="checkNumberMinMax(this)">
+	            							</div>
+	                                    </div>
+
+										<div class="row mt-3" id="div_onboarding" style="display:none">            							
+	            							<label  class="form-label">Cost</label>
+	            							<div class="col-sm-4">
+	            								<input type="text" class="form-control" id="txt_onboarding_cost" placeholder="Cost" onkeypress="return validateNumber(event)">
+	            							</div>
+	                                    </div>
+										<div class="col-xl-12 mt-3" style="text-align:right;">
+													<button type="button" id="btn_dept_reset" class="btn btn-light waves-effect waves-light" ><i class="mdi mdi-refresh"></i> Reset</button>
+													<button type="button" id="btn_save" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-content-save-outline"></i>&nbsp;Save</button>
+												</div>
+												<div class="col-xl-12 mt-3">
+												<div class="table-responsive">
+                                            <table class="table table-striped mb-0" id="master_list">
+                                                <thead>
+                                                    <tr>
+								                     <th></th>
+	                                                    <th class="desc-label">Description</th>
+	                                                    <th>Category</th>	                                                   
+	                                                    <th>Status</th>
+								                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+												</div>
+												</form>
+                                            </div>
+                                            <div class="tab-pane" id="profile-b2">
+                                                <!-- PUBLIC HOLIDAYS -->
+												<form class="form-horizontal" data-validate="parsley" id="holiday_form">
+												<div class="row">
+													
+												<div class="col-md-5">
+													<label for="simpleinput" class="form-label">Holiday Description <span class="mandatory">*</span></label>
+													<input type="text" required="required" id="txt_hp_desc" placeholder="Required" class="form-control">
+                                                        <!-- <label for="simpleinput" class="form-label">Companies</label>
+                                                        <select class="form-control country" id="dd_company" data-toggle="select2" onchange="$.fn.get_holidays_list()" data-width="100%"> -->
+                                                   
+                                                </select>
+                                                    </div>
+                                            <div class="col-md-3">
+                                               <label for="simpleinput" class="form-label">Year</label>
+                                                <select id="dd_year" class="form-control country" onchange="$.fn.get_holidays_list()" data-toggle="select2" data-width="100%">
+                                                    
+                                                </select>
+                                            </div> <!-- end col -->
+											<div class="col-md-3">
+                                                        <label for="simpleinput" class="form-label">Date <span class="mandatory">*</span></label>
+														
+                                                       
+														
+														<div class="input-group mb-3">
+   <input id="dp_hp" required type="text" class="form-control flatpickr-input" >
+</div>
+                                                    </div>
+											<div class="col-md-1">
+												<label for="simpleinput"  style="width:100%;text-align:center;">Active</label>
+												<div style="text-align:center;">
+													<input style="margin-top:15px;" class="form-check-input midsize-checkbox" type="checkbox" value="" id="chk_hp_is_active" checked=""></div> 
+												</div>
+											
+                                           
+                                        </div>
+										<!-- PH SECOND ROW -->
+										<div class="row mt-3">
+												<div class="col-md-12">
+                                                        <!-- <label for="simpleinput" class="form-label">Holiday Description <span class="mandatory">*</span></label>
+                                                        <input type="text" required="required" id="txt_hp_desc" placeholder="Required" class="form-control"> -->
+                                                    </div>
+                                            
+											
+                                           
+                                        </div>
+										<!-- PH SECOND ROW -->
+										<!-- PH THIRD ROW -->
+										<div class="mt-3">
+										 <div class="col-xl-12 mt-3" style="text-align:right;">
+										 <button type="button" class="btn btn-blue waves-effect waves-light fileinput-button" id="btn_uploadfile" ><i class="mdi mdi-upload"></i> Upload
+											<input id="fileupload_ph" type="file" name="qqfile">
+										 </button>
+										 <div id="files_doc_upload" class="d-none"></div>
+													<a href="javascript:void(0)" onclick="$.fn.download_template();return false;" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-download"></i> Download Template</a>
+													<button type="button" class="btn btn-light waves-effect waves-light" id="btn_hp_reset"><i class="mdi mdi-refresh"></i> Reset</button>
+													<button id="btn_hp_save" type="button" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-content-save-outline"></i> Save</button>
+												</div>
+										</div>
+										<!-- PH THIRD ROW -->
+										<!-- PH FOURTH ROW -->
+										<div class="mt-3">
+											<div class="col-xl-12">
+												<div>Total Records&nbsp;<span id="total_holidays" class="badge rounded-pill bg-danger">
+                                                       0
+                                                    </span></div>
+													<hr>
+											</div>
+										</div>
+										<!-- PH FOURTH ROW -->
+										<!-- PH FIFTH ROW -->
+											<div class="mt-3">
+											<div class="table-responsive">
+                                            <table class="table table-striped mb-0" id="hp_list">
+                                                <thead>
+                                                    <tr>
+								                     <th width="5%"></th>
+								                     <th width="15%">Date</th>
+								                     <th width="40%">Description</th>
+								                     <th width="5%">Active</th>
+								                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                   
+                                                </tbody>
+                                            </table>
+                                        </div>
+											</div>
+										<!-- PH FIFTH ROW -->
+												<!-- PUBLIC HOLIDAYS -->
+												</form>
+                                            </div>
+                                            <div class="tab-pane" id="messages-b2">
+												<div class="col-xl-12" style="text-align:right;">
+													<button type="button" id="btn_emp_new" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle me-1"></i> New Employer</button>
+												</div>
+                                                <div class="table-responsive">
+                                            <table class="table table-striped mb-0" id="tbl_view_list">
+                                                <thead>
+                                                    <tr>
+								                     <th></th>
+								                     <th>Employer Name</th>
+								                     <th>Prefix</th>
+								                     <th>Status</th>
+								                     <th>Created Date</th>
+								                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                            </div>
+											<div class="tab-pane" id="div_cd">
+								   
+								   <!-- New div -->
+								   <div class="row" id="new_div" style="display: none">
+								      <div class="col-sm-12 text-right">
+								         <div class="form-group mb-0" style="float:right">
+								            <a href="#" class="btn btn-secondary waves-effect waves-light" id="btn_emp_hide"><i class="fa fa-arrow-left"></i> Back</a>
+								         </div>
+								      </div>
+								      <form class="form-horizontal" data-validate="parsley" id="employer_form">
+								         <input type="hidden" id="created_by" value="">
+								         <input type="hidden" id="employer_id" value="">
+								         <div class="col-md-12">
+								            <div class="panel panel-grape">
+								               <div class="panel-body">
+								                  <div class="form-group">
+								                     <label for="txt_question" class="col-sm-2 control-label">Employer Name <span class="mandatory">*</span></label>
+								                     <div class="col-sm-4 error-container"> 
+								                        <input class="form-control" id="employer_name" name="employer_name" placeholder="Required" required>
+								                     </div>
+								                     <label for="txt_question" class="col-sm-2 control-label">Employer Address <span class="mandatory">*</span></label>
+								                     <div class="col-sm-4 error-container"> 
+								                        <textarea class="form-control" placeholder="Required" id="employer_address" name="employer_address" required="required"></textarea>
+								                     </div>
+								                  </div>
+								                  <div class="form-group">
+								                     <label for="txt_question" class="col-sm-2 control-label">Prefix <span class="mandatory">*</span></label>
+								                     <div class="col-sm-4 error-container"> 
+								                        <input class="form-control" id="prefix" placeholder="Required" name="prefix" required="required" data-maxlength="5" data-uppercase="true" >
+								                     </div>
+								                     <label for="txt_question" class="col-sm-2 control-label">Mail Signature <span class="mandatory">*</span></label>
+								                     <div class="col-sm-4 error-container"> 
+								                        <textarea class="form-control" placeholder="Required" id="mail_signature" name="mail_signature" required="required"></textarea>
+								                     </div>
+								                  </div>
+								                  <div class="form-group">
+								                     <label for="txt_question" class="col-sm-2 control-label">Phone.No</label>
+								                     <div class="col-sm-4 error-container"> 
+								                        <input class="form-control" id="phone_no" name="phone_no" />
+								                     </div>
+								                     <label for="txt_question" class="col-sm-2 control-label">Website</label>
+								                     <div class="col-sm-4 error-container"> 
+								                        <input class="form-control" id="website" name="website" data-type="url" />
+								                     </div>
+								                  </div>
+								                  <div class="form-group">
+								                     <label class="col-sm-2 control-label">Voucher Prefix <span class="mandatory">*</span></label>
+								                     <div class="col-sm-4 error-container"> 	<input class="form-control" id="voucher_prefix" required="required" maxlength="5" uppercase="true"/>
+								                     </div>
+								                     <label class="col-sm-2 control-label">Voucher Sequence</label>
+								                     <div class="col-sm-4 error-container"> <input class="form-control" id="voucher_sequence" min="5" maxlength="10" onkeypress="return validateNumber(event)" />
+								                     </div>
+
+								                  </div>
+								                  <div class="form-group">
+
+												  	<label class="col-sm-2 control-label">Voucher Suffix</label>
+								                     <div class="col-sm-4 error-container"> 	<input class="form-control" id="voucher_suffix" data-maxlength="5" data-uppercase="true"/>
+								                     </div>
+
+								                     <label class="col-sm-2 control-label">Status</label>
+								                     <div class="col-sm-1">
+								                        
+														<input type="checkbox" id="is_active" name="is_active" checked class="js-switch" data-color="#99d683"/>
+								                     </div>
+
+													 <label class="col-sm-3 control-label" id="lbl_status" style="text-align:left">ACTIVE</label>
+												  </div>
+
+												  <div class="form-group">
+												  <label class="control-label col-sm-2">Logo</label>
+			                    					<div class="col-sm-4">
+														<label class="cabinet center-block">
+															<figure style="margin:0">
+																<img src="../public/assets/img/add-logo.png" class="gambar img-responsive img-thumbnail" id="profile_photo-output" name="profile_photo-output" /><br>
+																
+															</figure>
+															<a href="javascript:void(0)" class="btn btn-danger" id="btn_remove_logo" style="margin-left: 5px;"><i class="fa  fa-trash-o"></i>  Remove</a>
+															<input type="file" class="item-img file center-block" name="profile_photo" id="profile_photo" />
+														</label>
+														<input type="hidden" name="profile_photo_base64" id="profile_photo_base64">
+														<div id="files" class="files"></div>
+														
+														<span style="font-style: italic;font-size:13px;">Logo dimensions should be 250px*16px</span>
+																									
+													</div>
+												  </div>
+
+
+								                  <p class="pull-right">
+								                 <div class="col-xl-12 " style="text-align:right;">
+								                     
+								                     <button type="button" id="btn_emp_reset" class="btn btn-light waves-effect waves-light" ><i class="mdi mdi-refresh"></i> Reset</button>
+													 <button type="button" id="btn_emp_save" class="btn btn-success waves-effect waves-light" ><i class="mdi mdi-content-save-outline"></i> Save</button>
+								                  </div>
+								                  </p>
+								               </div>
+								            </div>
+								         </div>
+								      </form>
+								   </div>
+								   <!-- New div -->
+								   <div id="list_div" >
+								      <div class="col-sm-12 text-right" id="new_btn_div" style="display: none;">
+								         <div class="form-group" style="float:right;">
+								            <button type="button" id="btn_emp_new" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-plus-circle me-1"></i> New Employer</button>
+								         </div>
+								      </div>
+								   </div>
+								   <div class="col-sm-12" id="col-sm12_div">
+								      <div class="panel panel-grape">
+								         <div class="panel-body">
+								            <table class="table" id="tbl_view_list">
+								               <thead>
+								                  <tr>
+								                     <th></th>
+								                     <th>Employer Name</th>
+								                     <th>Prefix</th>
+								                     <th>Status</th>
+								                     <th>Created Date</th>
+								                  </tr>
+								               </thead>
+								               <tbody></tbody>
+								            </table>
+								         </div>
+								      </div>
+								   </div>
+								</div>
+											
+                                        </div>
+                                    </div>
+                                </div> <!-- end card-->
+                            </div>
+            </div>
+        </div> <!-- end card-->
+    </div> <!-- end col -->
+</div>
+<div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+				<h4 class="modal-title" style="float:left" id="myModalLabel">Edit Photo</h4>
+				<button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="upload-demo" class="center-block"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"  data-bs-dismiss="modal">Close</button>
+                <button type="button" id="cropImageBtn" class="btn btn-primary">Crop</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="upload_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content" style="width:650px;">
+      		<div class="modal-header" style="height:100px;overflow:auto;">
+           		<h4 class="modal-title" style="float:left" id="myModalLabel">Public Holiday</h4>
+				<button type="button" style="float:right" class="bootbox-close-button close"  data-bs-dismiss="modal" aria-label="Close"></button>
+     			</div>
+          		<div class="modal-body" style="height: 500px; overflow: auto">
+         			<table class="table">
+						<thead>
+		    				<tr>
+			           			<th></th>
+                             	<th>Date</th>
+                              	<th>Description</th>
+                           		<th>Active Status</th>
+                        	</tr>
+                      	</thead>
+                       	<tbody id="tbl_upload_body"></tbody>
+           			</table>
+           		</div>
+       			<div class="modal-footer">
+       				<button type="button" class="btn btn-light waves-effect waves-light"  data-bs-dismiss="modal">Close</button>
+           			<button type="button" class="btn btn-primary-alt ladda-button" data-spinner-color="#000000" id="btn_add_upload_batch"><i class="fa fa-save"></i> Save</button>
+        		</div>
+       	</div>
+	</div>
+</div>
+<!-- end row -->
+<script src="./assets/libs/form-croppie/croppie.min.js"></script>

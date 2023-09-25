@@ -1,0 +1,117 @@
+<style>
+    .cr-boundary{height: 40px !important;}
+</style>
+
+<!-- third party css end -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">&nbsp;User Profile</h4>
+        </div>
+    </div>
+</div>     
+<!-- end page title --> 
+
+<!--start-->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    
+                    <div class="col-md-2">                    
+                        <div id="div_photo_container" class="pull-left" style="margin: 0 20px 20px 0">
+                            <img id="img_emp_photo" src="" width="120" height="120"  class="pull-left" style="margin: 0 20px 20px 0">
+                            <button type="button" class="btn btn-primary mb-1" data-style="expand-left" data-spinner-color="#000000" id="btn_edit_photo" style="width: 103px;display:none; margin: 0 0px 0px 8px;" >Edit</button>
+                            <button type="button" class="btn btn-primary mb-1" style="display:none;width: 103px;margin: 0 0px 0px 8px;" data-style="expand-left" data-spinner-color="#000000" id="btn_edit_done">Apply</button>
+                            <span class="btn btn-success fileinput-button mb-1" id="btn_add_image" style="display: none;margin: 0 0px 0px 8px;">
+                                <span>Browse File</span>
+                                <input id="fileupload" type="file" name="files[]" data-extension="png,jpg,jpeg">
+                            </span>
+                        </div>   
+                    </div>
+                    
+                    <div class="col-md-10">
+                        <div class="table-responsive">
+                            
+                            <table class="table table-condensed">
+                                <h3><strong><span id="div_name"></span></strong> 
+                                    <!-- <span id="btn_edit" style="cursor: pointer" title="Edit Details"><i class="fa fa-pencil" aria-hidden="true"><i class="mdi mdi-square-edit-outline"></i></i></span> -->
+                                </h3>
+                                
+                                <tbody class="personal-details">
+                                    
+                                    <tr>
+                                        <td>Designation</td>
+                                        <td id="div_desg"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reporting To</td>
+                                        <td id="div_reporting_to"></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>Employer</td>
+                                        <td id="div_employer"></td>
+                                    </tr> -->
+                                    <tr>
+                                        <td>Department</td>
+                                        <td id="div_dept"></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>About</td>
+                                        <td></td>
+                                    </tr>
+                                    
+                                    
+                                    <tr>
+                                        <td >Email</td>
+                                        <td >
+                                            <div id="view_email">
+                                            <a href="" id="div_email"></a>
+                                            <span id="btn_edit_email" class="btn-edit-details" title="Edit Email"><i class="fa fa-pencil" aria-hidden="true"><i class="mdi mdi-square-edit-outline"></i></i></span>
+                                            </div>
+                                            <div id="edit_email" class="edit-container" style="display:none;">
+                                            <input type="email" class="form-control" id="txt_email" data-parsley-type="email" required>
+                                            <a class="btn btn-success btn-save-edit" id="btn_save_email" style="margin: 0 5px;">Save</a>
+                                            <a class="btn btn-light waves-effect waves-light m-1 btn-cancel-edit" id="btn_cancel_email"><i class="fa fa-times me-1"></i>Cancel</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone</td>
+                                        <td class="form-inline">
+                                            <div id="view_phone" class="view-container">
+                                            <span><i class="fa fa-phone fa-fw" aria-hidden="true"></i>: </span><span id="div_phone" style="margin-right: 15px;"></span>
+                                            <span><i class="fa fa-mobile fa-fw" aria-hidden="true"></i>: </span><span id="div_mobile"></span>
+                                            <span id="btn_edit_phone" class="btn-edit-details" title="Edit Phone Number"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                            </div>
+                                            <div id="edit_phone" class="edit-container form-group" style="display: none;">
+                                            <label for="txt_phone">Home: </label>
+                                            <input class="form-control" id="txt_phone" data-parsley-type="digits" required>
+                                            <label for="txt_mobile">Mobile(MY): </label>
+                                            <input class="form-control" id="txt_mobile" data-parsley-type="digits" required>
+                                            <a class="btn btn-success btn-save-edit" id="btn_save_phone" style="margin: 0 5px;">Save</a>
+                                            <a class="btn btn-light waves-effect waves-light m-1 btn-cancel-edit" id="btn_cancel_phone"><i class="fa fa-times me-1"></i> Cancel</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                
+                </div>
+
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div>
+</div>
+                        
+                   
+
+

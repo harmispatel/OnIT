@@ -1,0 +1,430 @@
+<style>
+    .editbtn , .viewbtn{
+        padding: 6px 10px !important;
+        margin: 2px !important;
+    }
+</style>
+<div class="row" id="view-list">
+    <div class="row mt-3 mb-1 pe-0">
+        <div class="col-12 pe-0">
+            <div class="page-title-box">
+                <!-- <h4 class="page-title" style="float:left">Assets&nbsp;&nbsp;<span id="total_records" class="badge rounded-pill bg-warning small-pill">0</span></h4> -->
+                <h4 class="page-title" style="float:left">Project List</span></h4>
+                <div class="mt-3" style="float:right">
+                    <button type="button" id="btn_search_action" class="btn btn-success" ><i class="fe-search me-1"></i> Search</button>
+                    <button type="button" id="btn_new" class="btn btn-danger" ><i class="mdi mdi-plus-circle me-1"></i> Add</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <div id="searchPanel" class="row pe-0" style="display: none;">
+        <div class="col-12 pe-0">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-end">
+                        <a id="btn_close_search" href="javascript:void(0)">
+                            <i class="mdi mdi-close-box m-0 text-muted h3"></i>
+                        </a>
+                    </div>
+                    <div class="clearfix"></div>
+                    
+                    <form class="form-horizontal" data-validate="parsley" id="detail_form">
+
+                    </form>
+
+
+                        <div class="form-group align-right">
+                            <button id="btn_reset" type="button" class="btn btn-light waves-effect waves-light m-1"><i class="fe-refresh-cw me-1"></i> Reset</button>
+                            <button id="btn_search" type="button" class="btn btn-success waves-effect waves-light mt-1 mb-1"><i class="fe-search me-1"></i> Search</button>
+                            <!-- <button class="btn btn-primary waves-effect waves-light m-1" id="add-condition"><i class="fas fa-plus"></i> Add Row</button> -->
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dynamicContent" style="display: none;" class="row">
+        <div class="form-group condition-row">
+            
+            
+            <label class="col-sm-1 control-label">Project Name</label>
+            <div class="col-sm-5 errorContainer">
+                <input type="text" class="form-control" id="project_name_id" placeholder="name" value="">
+            </div>
+        
+            <label  class="col-sm-1 control-label">Project Description</label>
+            <div class="col-sm-5 errorContainer">
+                <textarea id="description_id" class="form-control" name="description" value="">
+                </textarea>
+            </div> 
+        </div>
+    </div>
+
+    <div id="tblList" class="">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- <div class="dropdown float-end">
+                        <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <p class="dropdown-item"  onclick="exportTable2CSVAL('Assets','tbl_list')" style="cursor: pointer;">Export as Excel</p>
+                            <p class="dropdown-item"  onclick="exportTable2PDF('Assets','tbl_list','p')" style="cursor: pointer;">Export as PDF</p>
+                        </div>
+                    </div> -->
+                    <div class="table-responsive  mt-0">
+                        <table class="table table-centered table-striped w-100"  id="tbl_list">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Spend</th>
+                                    <th>Type</th>
+                                    <th>Invoice date</th>
+                                    <th>From date</th>
+                                    <th>To date</th>
+                                    <th>Created by</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                 
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="load-more text-center" style="display: none;" id="btn_load_more">
+						<a class="btn btn-info btn-xs"><span class="fa fa-arrow-down fa-fw"></span>Load More<span class="fa fa-arrow-down fa-fw"></span></a>
+					</div>
+                </div>
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+    
+
+<!-- view Modal -->
+  <div class="modal fade" id="viewlistmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">View Data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body ">
+            <div class="d-flex align-items-center">
+                <h5><i class="fas fa-caret-right"></i> Name :- </h5>
+                <p class="mb-0 ms-2" id="nameid_v">abc</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <h5><i class="fas fa-caret-right"></i> Description :- </h5>
+                <p class="mb-0 ms-2" id="descriptionid_v">essagess....</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <h5><i class="fas fa-caret-right"></i> Amount :- </h5>
+                <p class="mb-0 ms-2" id="amountid_v">2000</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <h5><i class="fas fa-caret-right"></i> Spend :- </h5>
+                <p class="mb-0 ms-2" id="sepndid_v">4</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <h5> <i class="fas fa-caret-right"></i> Type :- </h5>
+                <p class="mb-0 ms-2" id="typeid_v">5</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <h5><i class="fas fa-caret-right"></i> Invoice date :- </h5>
+                <p class="mb-0 ms-2" id="invoiceid_v">08-07-2022</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <h5><i class="fas fa-caret-right"></i> From Date :- </h5>
+                <p class="mb-0 ms-2" id="fromdateid_v">01-07-2022</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <h5><i class="fas fa-caret-right"></i> To Date :- </h5>
+                <p class="mb-0 ms-2" id="todateid_v">05-07-2022</p>
+            </div>
+            
+        </div>
+        <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+    </div>
+    </div>
+</div>
+
+</div>
+<div class="row" id="new_div" style="display: none;">
+
+    <!-- start page title -->
+    <div class="row mt-3 mb-1">
+       <div class="col-12">
+           <div class="page-title-box">
+               <h4 class="page-title" style="float:left">Project</h4>
+               <div class="mt-3" style="float:right">
+                   <a href="javascript:void(0);" id="btn_back" class="btn btn-outline-dark waves-effect waves-light mb-2"><i class="fe-arrow-left me-1"></i>Back</a>
+               </div>
+           </div>
+       </div>
+   </div>
+   <!-- end page title --> 
+
+   <div class="row">
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="header-title mb-3" id="h4_primary_no">Project</h4>
+
+          <div class="">
+            <div class="">
+              <!-- <form  class="form-horizontal" data-validate="parsley" id="asset_form"> -->
+              <form class="form-horizontal needs-validation" data-validate="parsley" id="project_form_id" novalidate>
+                <div class="row mb-3">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row ">
+                      <div class="col-4">
+                        <label for="validationCustom01" class="form-label">name</label>
+                      </div>
+                      <div class="col-7">
+                        <input type="text" class="form-control" id="validationCustom01" placeholder="name" value=""
+                          required />
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row justify-content-end">
+                      <div class="col-4">
+                        <label for="description" class="form-label">Description:</label>
+                      </div>
+                      <div class="col-7">
+                        <textarea id="description" class="form-control" name="description" required
+                          data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100"
+                          data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.."
+                          data-parsley-validation-threshold="10">
+                                                </textarea>
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row ">
+                      <div class="col-4">
+                        <label for="amount" class="form-label">Amount</label>
+                      </div>
+                      <div class="col-7">
+                        <input type="number" class="form-control" id="amount" required placeholder="Amount.." />
+                        <div class="invalid-feedback">
+                          Please Enter Amount.
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row justify-content-end">
+                      <div class="col-4">
+                        <label for="spend" class="form-label">Spend</label>
+                      </div>
+                      <div class="col-7">
+                        <input type="number" class="form-control" id="spend" required placeholder="spend.." />
+                        <div class="invalid-feedback">
+                          Please Enter spend.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row ">
+                      <div class="col-4">
+                        <label for="type" class="form-label">Type</label>
+                      </div>
+                      <div class="col-7">
+                        <select id="type" class="form-select" required="">
+                          <option value="">Choose..</option>
+                          <option value="1">Short Contract</option>
+                          <option value="2">renewal contract</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Please Select type.
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row justify-content-end">
+                      <div class="col-4">
+                        <label for="invoicedate" class="form-label">invoice Date</label>
+                      </div>
+                      <div class="col-7">
+                        <input type="date" id="invoicedate" class="form-control" placeholder="invoice Date..">
+                        <div class="invalid-feedback">
+                          Please Enter invoice date.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row ">
+                      <div class="col-4">
+                        <label for="fromdate" class="form-label">From Date</label>
+                      </div>
+                      <div class="col-7">
+                        <input type="date" id="fromdate" class="form-control" placeholder="From Date..">
+                        <div class="invalid-feedback">
+                          Please Enter from date.
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row justify-content-end">
+                      <div class="col-4">
+                        <label for="todate" class="form-label">To Date</label>
+                      </div>
+                      <div class="col-7">
+                        <input type="date" id="todate" class="form-control" placeholder="To Date..">
+                        <div class="invalid-feedback">
+                          Please Enter to date.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-lg-6 col-md-5 col-12">
+                    <div class="row">
+                      <div class="col-4">
+                        <label for="customerid" class="form-label">Customer Id</label>
+                      </div>
+                      <div class="col-7">
+                        <select id="customerid" class="form-select" required>
+                          <option value="">Choose..</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                          Please Select Customer id.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="row mb-3" hidden>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="row ">
+                      <div class="col-4">
+                        <label for="validationCustom01" class="form-label">Edit Id</label>
+                      </div>
+                      <div class="col-7">
+                        <input type="text" class="form-control" id="editid" placeholder="editid">
+                        <div class="valid-feedback">
+                          Looks good!
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <hr>
+                <div class="row mb-3">
+                  <div class="col-md-12">
+                    <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Add Users Work Schedule</h5>
+                    <div class="col-xl-12"  id="dynamic-forms">
+                      <form id="dynamic-form">
+                        <div id="dynamic-fields">
+                          <div class="row mb-2">
+                            <div class="col col-3">
+                              <strong>Day(s)</strong>
+                            </div>
+                            <div class="col col-2">
+                              <strong>User</strong>
+                            </div>
+                            <div class="col">
+                              <strong>Start Time</strong>
+                            </div>
+                            <div class="col">
+                              <strong>End Time</strong>
+                            </div>
+                            <div class="col">
+                              <strong>Start Break Time</strong>
+                            </div>
+                            <div class="col">
+                              <strong>End Break Time</strong>
+                            </div>
+                            <div class="col">
+                              <!-- This column is for buttons, no title needed -->
+                            </div>
+                          </div>
+                          <!-- Default column -->
+                          <div class="row mb-2">
+                            <div class="col col-3">
+                              <select class="day-selector" name="day_1"></select>
+                            </div>
+                            <div class="col col-2">
+                              <select class="js-select2 form-control" name="user_1" multiple>
+                                <!-- Options will be added dynamically using Select2 AJAX -->
+                              </select>
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control timepicker" name="start_time_1">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control timepicker" name="end_time_1">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control timepicker" name="start_break_time_1">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control timepicker" name="end_break_time_1">
+                            </div>
+
+                            <div class="col">
+                              <button type="button" class="btn btn-danger remove-field">x</button>
+                              <button type="button" class="btn btn-success" id="add-field">+</button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- <button type="submit" class="btn btn-success">Submit</button> -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class=" col-md-12 mt-1" style="text-align:right;" id="actions_div">
+                  <!-- <button id="btn_cancel" type="button" class="btn btn-light waves-effect waves-light m-1"><i class="fa fa-times me-1"></i> Cancel</button> -->
+                  <button id="btn_save" type="button"
+                    class="btn btn-success waves-effect waves-light mt-1 mb-1 ladda-button" data-color="green"
+                    data-style="expand-left"><i class="fa fa-check"></i> Save</button>
+                  <!-- <button class="btn btn-primary" type="button" onclick="$.fn.project_form()">Submit</button> -->
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div> <!-- end card-->
+    </div> <!-- end col -->
+  </div>
+</div>

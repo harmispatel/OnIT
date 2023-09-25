@@ -1,0 +1,422 @@
+<style>
+    .file-upload.alert-light  { background:none !important;border:0cm !important;}
+    .toggle {
+      --width: 80px;
+      --height: calc(var(--width) / 3);
+
+      position: relative;
+      display: inline-block;
+      width: var(--width);
+      height: var(--height);
+      box-shadow: none;
+      border-radius: var(--height);
+      cursor: pointer;
+    }
+
+    .toggle input {
+      display: none;
+    }
+
+    .toggle .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--height);
+      background-color: #ccc;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .toggle .slider::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(var(--height));
+      height: calc(var(--height));
+      border-radius: calc(var(--height) / 2);
+      background-color: #fff;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .toggle input:checked+.slider {
+      background-color:#6658dd;
+    }
+
+    .toggle input:checked+.slider::before {
+      transform: translateX(calc(var(--width) - var(--height)));
+    }
+
+    .toggle .labels {
+      position: absolute;
+      top: 6px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 10px;
+      font-family: sans-serif;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .toggle .labels::after {
+      content: attr(data-off);
+      position: absolute;
+      right: 5px;
+      color: #4d4d4d;
+      opacity: 1;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .toggle .labels::before {
+      content: attr(data-on);
+      position: absolute;
+      left: 5px;
+      color: #ffffff;
+      opacity: 0;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .toggle input:checked~.labels::after {
+      opacity: 0;
+    }
+
+    .toggle input:checked~.labels::before {
+      opacity: 1;
+    }
+
+</style>
+ 
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Leave Application</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                
+                
+                <div class="row">
+                    <div class="col-md-12" id="totalleave" style="display:block;">
+                        <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-striped mb-0" id="tbl_summary_list">
+                                        <thead>
+                                            <tr>
+                                                <th>Leave Type</th>
+                                                <th>Entitled for this year</th>
+                                                <th>Brought Forward</th>
+                                                <th>Taken this year (Paid)</th>
+                                                <th>Taken this year (Unpaid)</th>
+                                                <th>Available Leave</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <form class="form-horizontal" data-validate="parsley" id="leave_form">                    
+                        
+                        <div class="row mt-2">
+                            <div class="col-lg-6">                            
+                                <div class="row">
+                                    <label for="validationCustom02" class="col-4 col-form-label">Leave Type <span class="error_color">*</span></label>
+                                    <div class="col-8 errorContainer">
+                                        <select id="dd_leave_type" style="width:100%" class="form-control populate  data-toggle="select2" onchange="$.fn.view_file_status(this.id)" required>
+                                    
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">                            
+                                <div class="row">
+                                    <label for="txt_leave_reason" class="col-4 col-form-label">Reason <span class="error_color">*</span></label>
+                                    <div class="col-8 errorContainer">
+                                        <input type="text" class="form-control" id="txt_reason"  required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-lg-6">
+                                <!-- Start Date -->
+                                <div class="row">
+                                    <label for="start_date" class="col-4 col-form-label">Start Date <span class="error_color">*</span></label>
+                                    <div class="col-8 errorContainer">
+                                        <div class="input-group" data-placement="top" data-align="top" data-autoclose="true">
+                                            <input type="text" class="form-control flatpickr-input" id="start_date" placeholder="dd-mm-yyyy" readonly="readonly" required>
+                                            <div class="input-group-text"><i class="mdi mdi-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-lg-6">
+                                <!-- End Date -->
+                                <div class="row">
+                                    <label for="end_date" class="col-4 col-form-label">End Date <span class="error_color">*</span></label>
+                                    <div class="col-8 errorContainer">
+                                        <div class="input-group" data-placement="top" data-align="top" data-autoclose="true">
+                                            <input type="text" class="form-control flatpickr-input" id="end_date" placeholder="dd-mm-yyyy" readonly="readonly" required>
+                                            <div class="input-group-text"><i class="mdi mdi-calendar"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div id="leave_time_off" class="col-lg-6" style="display: none;">
+                                <div class="row">
+                                <label for="dd_leave_time_off" class="col-4 col-form-label">Leave Type :</label>
+                                <div class="col-8 errorContainer">
+                                    <select id="dd_leave_time_off" style="width:100%" class="populate">
+                                        <option value="1" selected>1 Hour</option>
+                                        <option value="2">2 Hours</option>
+                                        <option value="3">3 Hours</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6" id ="leave_file">
+                            <div class="row">
+                            <label for="fileupload" class="col-4 col-form-label">Attachments </label>
+                                <div class="col-8 errorContainer">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <span class="btn btn-success waves-effect waves-light fileinput-button" id="btn_add_image"  style="width: 100%">
+                                                <span>Browse</span>
+                                                <input id="fileupload_cert" type="file" name="qqfile">
+                                            </span>
+                                            <br/>
+                                        </div>
+                                        <div id="files_cert" class="col-sm-12 col-sm-offset-7">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-lg-6">
+                                <!-- Title -->
+                                <div class="row">
+                                    <label for="dd_leave_type" class="col-4 col-form-label">Nature of Expenses </label>
+                                    <div class="col-8 errorContainer">
+                                        <select id="dd_expenses" style="width:100%" class="form-select populate"  onchange="$.fn.check_nature_of_expense(this.id)">
+                                            <option value="">Please Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 leave_file_cost">
+                                <div class="row">
+                                    <label for="dd_leave_type" class="col-4 col-form-label">Total</label>
+                                    <div class="col-8 errorContainer">
+                                        <div class="input-group">
+                                            <div class="input-group-text">RM</div>
+                                            <input type="number" step="0.01" value="0.00" class="form-control marginBottom10px" id="txt_total"  readonly="readonly">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 leave_file_cost">
+                                <div class="row">
+                                    <label for="txt_reason" class="col-4 col-form-label">Cost</label>
+                                    <div class="col-8 errorContainer">
+                                        <div class="input-group">
+                                            <div class="input-group-text">RM</div>
+                                            <input type="number" min="0.00" step="0.01" value="0.00" class="form-control marginBottom10px" id="txt_cost" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2 leave_file_cost">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <label for="dd_leave_type" class="col-4 col-form-label">SST / GST Amount </label>
+                                    <div class="col-8 errorContainer">
+                                        <div class="input-group">
+                                            <div class="input-group-text">RM</div>
+                                            <input type="number" min="0.00" step="0.01" value="0.00" class="form-control marginBottom10px" id="txt_gst" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <label for="txt_reason" class="col-4 col-form-label">Round Up</label>
+                                    <div class="col-8 errorContainer">
+                                        <div class="input-group">
+                                            <div class="input-group-text">RM</div>
+                                            <input type="number" min="0.00" step="0.01" value="0.00" class="form-control marginBottom10px" id="txt_roundup" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2 leave_file_cost">
+                            <div class="col-lg-6">
+                                <!-- Doc Date -->
+                                <div class="row">
+                                    <label for="btn_upload" class="col-4 col-form-label">Attachments</label>
+                                    <div class="col-8 errorContainer">
+                                        <span class="btn btn-success waves-effect waves-light fileinput-button" id="btn_upload"  style="width: 100%">
+                                            <span>Medical Bill</span>
+                                            <input id="fileupload" type="file" name="qqfile">
+                                        </span>
+                                        <br/>
+                                    </div>
+                                    <div id="files" class="col-sm-12 col-sm-offset-7">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12"> 
+                            <div class="form-group" style="margin-right: 2px; margin-top: 50px; float: right;">
+                                <div class="pull-right">
+                                    <div class="col-sm-12" style="text-align:right">
+                                        <button class="ladda-button btn btn-danger waves-effect waves-light" dir="ltr" data-style="expand-left"  id="btn_view_days">View dates</button>
+                                        <button class="ladda-button btn btn-danger waves-effect waves-light"  dir="ltr" data-style="expand-left" id="btn_save_time_off"><i class="fa fa-save"></i> Save</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div id="leave_days_info" class="col-sm-12">
+                            <table width="100%" class="table">
+                                <tbody>
+                                <tr>
+                                    <td width="50%"><h2 style="text-align:center"><span class="col-sm-12 label label-default">Available Leave : <span id="div_available_leave">n/a</span></span></h2></td>
+                                    <td width="50%"><h2 style="text-align:center"><span class="col-sm-12 label label-default">Balance Leave : <span id="div_balance_leave">n/a</span></span></h2></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                            <div class="col-sm-7">
+                                <table id="tbl_days" width="100%" class="table table-hover table-condensed">
+                                    <thead>
+                                        <th>
+                                            <input type="checkbox" id="chk_all" class="form-check-input" name="chk_all" onchange="$.fn.change_balance_leave('all')"></th>
+                                        <th>DATE</th>
+                                        <th>DAY</th>
+                                        <th>DURATION</th>
+                                        <th>&nbsp;</th>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="alert alert-info">
+                                    <h3>Public Holidays</h3>
+                                
+                                    <p id="div_holidays">
+
+                                    </p>
+                                    <a href="https://publicholidays.com.my/2023-dates/" id="public-holiday" target="_blank">Click here</a> to view all the public holidays.
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group" style="margin-right: 2px; margin-top: 50px; float: right;">
+                                    <div class="pull-right">
+                                        <div class="col-sm-12" style="text-align:right">
+                                            <button type="button" class="ladda-button btn btn-danger waves-effect waves-light leave" data-style="expand-left" data-spinner-color="#000000" id="btn_add_leave"><i class="fa fa-save"></i> Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </form>
+
+                </div>
+
+                <div id="tblList" class="row">
+                    <div class="col-12">
+                        <div class="dropdown float-end">
+                            <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <p class="dropdown-item"  onclick="exportTable2CSV('Leave','tbl_list')" style="cursor: pointer;">Export as Excel</p>
+                                <p class="dropdown-item"  onclick="exportTable2PDF('Leave','tbl_list','p')" style="cursor: pointer;">Export as PDF</p>
+                            </div>
+                        </div>
+                        <div class="table-responsive mt-3">
+                            <table class="table table-striped mb-0  no-footer "  id="tbl_list">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Start&nbsp;Date</th>
+                                        <th>End&nbsp;Date</th>
+                                        <th>Applied&nbsp;Date</th>
+                                        <th>Type</th>
+                                        <th>Days</th>
+                                        <th>Reason</th>
+                                        <th>Status</th>
+                                        <th style="width:200px !important;">Attachments</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                            <div id="div_load_more" class="d-flex justify-content-center load-more" style="display: none;">
+                                <button id="btn_load_more" type="button" class="btn btn-sm btn-info waves-effect waves-light rounded-pill ">
+                                    <i class="fa fa-arrow-down"></i>&nbsp;&nbsp;Load More&nbsp;&nbsp;<i class="fa fa-arrow-up"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div> <!--end col -->
+                </div>
+            </div> <!-- end card body-->
+        </div> <!-- end card -->
+    </div>
+</div>
+
+<div class="modal fade" id="remarkListModal" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="standard-modalLabel">Remark List</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>                        
+            <div class="modal-body">
+                <div class="row">
+                    <form class="form-horizontal" data-validate="parsley" id="remark_form">
+                        <div class="col-sm-12">
+                            <div class="form-group p-1">
+                                <textarea name="le_remark" id="le_remark" style="margin-right: 20px; margin-left: 20px;" class="form-control "></textarea>
+                            </div>
+                        </div> 
+                        <div style="float:right;margin-right: 10px;margin-bottom: 10px;">
+                            <button type="button" class="btn btn-success ladda-button" data-style="expand-left" data-spinner-color="#000000" id="btn_add_remark">Save</button>                           
+                        </div>
+                    </form>
+                    <hr>
+                    <table class="table" id="tbl_remark_list"><tbody></tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

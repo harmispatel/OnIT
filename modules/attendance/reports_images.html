@@ -1,0 +1,267 @@
+<div class="row mt-4 mb-1">
+  <div class="col-12">
+    <div class="page-title-box">
+      <h4 class="page-title" style="float:left">Attendance - Reports</h4>
+      <div class="mt-4" style="float:right">
+        <button type="button" data-color="green" id="btn_search_action"
+          class="btn btn-success waves-effect waves-light"><i class="mdi mdi-magnify"></i> Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="div_search" class="col-xl-12 mb-4" style="display: none;">
+
+  <div class="card mb-0">
+    <div class="card-body">
+      <div class="float-end">
+        <a id="btn_close_search" href="javascript:void(0)">
+          <i class="mdi mdi-close-box m-0 text-muted h3"></i>
+        </a>
+      </div>
+      <div class="clearfix"></div>
+
+      <div class="form-group condition-row d-block">
+
+        <div class="row mb-4">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="row">
+              <div class="col-4">
+                <label class="control-label">Date</label>
+              </div>
+              <div class="col-7">
+                <div class="errorContainer" id="date_container">
+                  <input type="text" id="doc_date" class="form-control flatpickr-input"
+                    placeholder="01-01-4021 to 31-12-4022" readonly="readonly">
+                  <input type="hidden" id="from_date">
+                  <input type="hidden" id="to_date">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="row">
+              <div class="col-4">
+                <label class="control-label">Employee</label>
+              </div>
+              <div class="col-7">
+                <div class="errorContainer">
+                  <select style="width:100%" class="select2Plugin search-field populate" id="dd_employee_search">
+                    <option value="">Please Select</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="row">
+              <div class="col-4">
+                <label class="control-label">Projects</label>
+              </div>
+              <div class="col-7">
+                <div class="errorContainer">
+                  <select style="width:100%" class="select2Plugin search-field populate" id="dd_project_search">
+                    <option value="">Please Select</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="row">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group align-right">
+        <button id="btn_reset" type="button" class="btn btn-light waves-effect waves-light m-1"><i
+            class="fe-refresh-cw me-1"></i> Reset</button>
+        <button id="btn_search" type="button" class="btn btn-success waves-effect waves-light mt-1 mb-1"><i
+            class="fe-search me-1"></i> Search</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card mb-0">
+      <div class="card-body">
+        <!-- start -->
+        <div class="attendance_images" style="display: none;">
+          <!-- <div class="attendance_images" style="display: block;"> -->
+            <div class="col-md-12">
+              <div class="btn-group" style="text-align:right">
+                <a href="#" id="grid" class="active btn btn-default btn-lg">
+                  <i class="mdi mdi-view-grid"></i>Grid</a>
+                <a href="#" id="list" class="btn btn-default btn-lg">
+                  <i class="mdi mdi-view-list"></i>List</a>
+              
+            </div>
+            <button type="submit" id="generate_attendance_links" style="float: right;" class="btn btn-success">Generate image links</button>
+          </div>
+
+          <div id="detail_images" class="row icon-list-demo" style="margin-top: 10px;">
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-1.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-2.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-3.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-4.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-5.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-6.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-7.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-1.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-2.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-3.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-4.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-5.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-6.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+            <div class="item  col-md-4">
+              <div class="card mb-4">
+                <img src="http://127.0.0.1:3000/Admin/dist/modern/assets/images/small/img-7.jpg" class="card-img-top preview-image group list-group-image" />
+                <div class="card-body">
+            
+                  <p class="card-text"><input type="checkbox" class="image-checkbox"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Preview Modal -->
+<div id="image-preview-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="image-carousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Carousel Items (Populated via JavaScript) -->
+          </div>
+          <a class="carousel-control-prev" href="#image-carousel" role="button" data-bs-slide="prev" data-target="#image-carousel" >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#image-carousel" role="button" data-bs-slide="next" data-target="#image-carousel" >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
